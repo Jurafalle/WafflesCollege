@@ -1,151 +1,170 @@
 package sg.iss.wafflescollege.model;
 
+
+import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the course database table.
+ * 
+ */
 @Entity
-@Table(name = "course")
-public class Course {
+@Table(name="course")
+public class Course{
+	
 	@Id
-	private int cid;
-	@Column(name = "course_code")
-	private String courseCode;
-	@Column(name = "course_name")
-	private String courseName;
-	@Column(name = "start_date")
-	private Date startDate;
-	@Column(name = "end_date")
-	private Date endDate;
-	private int credit;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "lnric")
+	@Column(name="CSE_ID")
+	private String cseId;
+
+	@Column(name="CSE_CREDIT")
+	private int cseCredit;
+
+	@Column(name="CSE_DESC")
+	private String cseDesc;
+
+	@Column(name="CSE_MAX_SIZE")
+	private int cseMaxSize;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="CSE_STARTDATE")
+	private Date cseStartdate;
+
+	@Column(name="CSE_STATUS")
+	private String cseStatus;
+
+	//bi-directional many-to-one association to Lecturer
+	@ManyToOne
+	@JoinColumn(name="LEC_ID")
 	private Lecturer lecturer;
-	@ManyToMany(targetEntity = Student.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "student_course", joinColumns = {
-			@JoinColumn(name = "ccid", referencedColumnName = "cid") }, inverseJoinColumns = {
-					@JoinColumn(name = "snric", referencedColumnName = "nric") }
 
-	)
-	private Set<Student> students = new HashSet<Student>();
+	//bi-directional many-to-one association to Enrollment
+	@OneToMany(mappedBy="course")
+	private List<Enrollment> enrollments;
 
-	// Constructor
+	//bi-directional many-to-one association to Studentgrade
+	@OneToMany(mappedBy="course")
+	private List<Studentgrade> studentgrades;
+
 	public Course() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Course(int cid, String courseCode, String courseName, Date startDate, Date endDate, int credit,
-			Lecturer lecturer, HashSet<Student> students) {
-		super();
-		this.cid = cid;
-		this.courseCode = courseCode;
-		this.courseName = courseName;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.credit = credit;
-		this.lecturer = lecturer;
-		this.students = students;
+	public String getCseId() {
+		return this.cseId;
 	}
 
-	public Course(String courseCode, String courseName, Date startDate, Date endDate, int credit) {
-		super();
-		this.courseCode = courseCode;
-		this.courseName = courseName;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.credit = credit;
+	public void setCseId(String cseId) {
+		this.cseId = cseId;
 	}
 
-	// Getters & Setters
-	public int getCid() {
-		return cid;
+	public int getCseCredit() {
+		return this.cseCredit;
 	}
 
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setCseCredit(int cseCredit) {
+		this.cseCredit = cseCredit;
 	}
 
-	public String getCourseCode() {
-		return courseCode;
+	public String getCseDesc() {
+		return this.cseDesc;
 	}
 
-	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
+	public void setCseDesc(String cseDesc) {
+		this.cseDesc = cseDesc;
 	}
 
-	public String getCourseName() {
-		return courseName;
+	public int getCseMaxSize() {
+		return this.cseMaxSize;
 	}
 
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+	public void setCseMaxSize(int cseMaxSize) {
+		this.cseMaxSize = cseMaxSize;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Date getCseStartdate() {
+		return this.cseStartdate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setCseStartdate(Date cseStartdate) {
+		this.cseStartdate = cseStartdate;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public String getCseStatus() {
+		return this.cseStatus;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public int getCredit() {
-		return credit;
-	}
-
-	public void setCredit(int credit) {
-		this.credit = credit;
+	public void setCseStatus(String cseStatus) {
+		this.cseStatus = cseStatus;
 	}
 
 	public Lecturer getLecturer() {
-		return lecturer;
+		return this.lecturer;
 	}
 
 	public void setLecturer(Lecturer lecturer) {
 		this.lecturer = lecturer;
 	}
 
-	public HashSet<Student> getStudents() {
-		return (HashSet<Student>) students;
+	public List<Enrollment> getEnrollments() {
+		return this.enrollments;
 	}
 
-	public void setStudents(HashSet<Student> students) {
-		this.students = students;
+	public void setEnrollments(List<Enrollment> enrollments) {
+		this.enrollments = enrollments;
 	}
 
-	// Object Basics
-	@Override
-	public String toString() {
-		return "Course [cid=" + cid + ", courseCode=" + courseCode + ", courseName=" + courseName + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", credit=" + credit + ", lecturer=" + lecturer + ", students="
-				+ students + "]";
+	public Enrollment addEnrollment(Enrollment enrollment) {
+		getEnrollments().add(enrollment);
+		enrollment.setCourse(this);
+
+		return enrollment;
 	}
+
+	public Enrollment removeEnrollment(Enrollment enrollment) {
+		getEnrollments().remove(enrollment);
+		enrollment.setCourse(null);
+
+		return enrollment;
+	}
+
+	
+	public List<Studentgrade> getStudentgrades() {
+		return this.studentgrades;
+	}
+
+	public void setStudentgrades(List<Studentgrade> studentgrades) {
+		this.studentgrades = studentgrades;
+	}
+
+	public Studentgrade addStudentgrade(Studentgrade studentgrade) {
+		getStudentgrades().add(studentgrade);
+		studentgrade.setCourse(this);
+
+		return studentgrade;
+	}
+
+	public Studentgrade removeStudentgrade(Studentgrade studentgrade) {
+		getStudentgrades().remove(studentgrade);
+		studentgrade.setCourse(null);
+
+		return studentgrade;
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cid;
+		result = prime * result + cseCredit;
+		result = prime * result + ((cseDesc == null) ? 0 : cseDesc.hashCode());
+		result = prime * result + ((cseId == null) ? 0 : cseId.hashCode());
+		result = prime * result + cseMaxSize;
+		result = prime * result + ((cseStartdate == null) ? 0 : cseStartdate.hashCode());
+		result = prime * result + ((cseStatus == null) ? 0 : cseStatus.hashCode());
+		result = prime * result + ((enrollments == null) ? 0 : enrollments.hashCode());
+		result = prime * result + ((lecturer == null) ? 0 : lecturer.hashCode());
+		result = prime * result + ((studentgrades == null) ? 0 : studentgrades.hashCode());
 		return result;
 	}
 
@@ -158,9 +177,55 @@ public class Course {
 		if (getClass() != obj.getClass())
 			return false;
 		Course other = (Course) obj;
-		if (cid != other.cid)
+		if (cseCredit != other.cseCredit)
+			return false;
+		if (cseDesc == null) {
+			if (other.cseDesc != null)
+				return false;
+		} else if (!cseDesc.equals(other.cseDesc))
+			return false;
+		if (cseId == null) {
+			if (other.cseId != null)
+				return false;
+		} else if (!cseId.equals(other.cseId))
+			return false;
+		if (cseMaxSize != other.cseMaxSize)
+			return false;
+		if (cseStartdate == null) {
+			if (other.cseStartdate != null)
+				return false;
+		} else if (!cseStartdate.equals(other.cseStartdate))
+			return false;
+		if (cseStatus == null) {
+			if (other.cseStatus != null)
+				return false;
+		} else if (!cseStatus.equals(other.cseStatus))
+			return false;
+		if (enrollments == null) {
+			if (other.enrollments != null)
+				return false;
+		} else if (!enrollments.equals(other.enrollments))
+			return false;
+		if (lecturer == null) {
+			if (other.lecturer != null)
+				return false;
+		} else if (!lecturer.equals(other.lecturer))
+			return false;
+		if (studentgrades == null) {
+			if (other.studentgrades != null)
+				return false;
+		} else if (!studentgrades.equals(other.studentgrades))
 			return false;
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Course [cseId=" + cseId + ", cseCredit=" + cseCredit + ", cseDesc=" + cseDesc + ", cseMaxSize="
+				+ cseMaxSize + ", cseStartdate=" + cseStartdate + ", cseStatus=" + cseStatus + ", lecturer=" + lecturer
+				+ ", enrollments=" + enrollments + ", studentgrades=" + studentgrades + "]";
+	}
+	
+	
+	
 }

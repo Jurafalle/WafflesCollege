@@ -1,79 +1,66 @@
 package sg.iss.wafflescollege.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the user database table.
+ * 
+ */
 @Entity
-@Table(name="userdb")
-public class User {
+@Table(name="user")
+public class User{
+	
 	@Id
-	private long id;
-	private String username;
-	private String address;
-	private String email;
+	@Column(name="USE_ID")
+	private String useId;
+
+	@Column(name="USE_PASSWORD")
+	private String usePassword;
+
+	@Column(name="USE_ROLE")
+	private String useRole;
 
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public User(long id, String username, String address, String email) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.address = address;
-		this.email = email;
+	public String getUseId() {
+		return this.useId;
 	}
 
-	public User(String username, String address, String email) {
-		super();
-		this.username = username;
-		this.address = address;
-		this.email = email;
+	public void setUseId(String useId) {
+		this.useId = useId;
 	}
 
-	public long getId() {
-		return id;
+	public String getUsePassword() {
+		return this.usePassword;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUsePassword(String usePassword) {
+		this.usePassword = usePassword;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUseRole() {
+		return this.useRole;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUseRole(String useRole) {
+		this.useRole = useRole;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", address=" + address + ", email=" + email + "]";
+		return "User [useId=" + useId + ", usePassword=" + usePassword + ", useRole=" + useRole + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((useId == null) ? 0 : useId.hashCode());
+		result = prime * result + ((usePassword == null) ? 0 : usePassword.hashCode());
+		result = prime * result + ((useRole == null) ? 0 : useRole.hashCode());
 		return result;
 	}
 
@@ -86,10 +73,24 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (id != other.id)
+		if (useId == null) {
+			if (other.useId != null)
+				return false;
+		} else if (!useId.equals(other.useId))
+			return false;
+		if (usePassword == null) {
+			if (other.usePassword != null)
+				return false;
+		} else if (!usePassword.equals(other.usePassword))
+			return false;
+		if (useRole == null) {
+			if (other.useRole != null)
+				return false;
+		} else if (!useRole.equals(other.useRole))
 			return false;
 		return true;
 	}
 	
 	
+
 }
