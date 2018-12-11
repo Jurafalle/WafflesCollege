@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import sg.iss.wafflescollege.model.User;
 
+
 @Component
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class UserSession {
