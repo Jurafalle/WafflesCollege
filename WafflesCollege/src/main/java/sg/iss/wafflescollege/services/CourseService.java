@@ -11,7 +11,7 @@ public interface CourseService {
 	int updateCourse(Course course);
 	int createCourse(Course course);
 	int removeCourse(Course course);
-	ArrayList<Course> findCoursesByCriteria(Course course);
+	ArrayList<Course> findCoursesByCriteria(Course course); 
 
 
 }
