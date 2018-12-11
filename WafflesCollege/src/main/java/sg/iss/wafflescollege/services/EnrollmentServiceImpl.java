@@ -1,12 +1,14 @@
 package sg.iss.wafflescollege.services;
 
 import java.util.ArrayList;
+import sg.iss.wafflescollege.model.Enrollment;
 
 import javax.annotation.Resource;
 
-import sg.iss.wafflescollege.model.Enrollment;
-import sg.iss.wafflescollege.repo.EnrollmentRepository;
+import org.springframework.stereotype.Service;
 
+import sg.iss.wafflescollege.repo.EnrollmentRepository;
+@Service
 public class EnrollmentServiceImpl implements EnrollmentService {
 
 	@Resource
@@ -19,7 +21,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	@Override
-	public Enrollment findNewEnrollmentById(String enrollmentId) {
+	public ArrayList<Enrollment> findNewEnrollmentById(String enrollmentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
