@@ -2,12 +2,17 @@ package sg.iss.wafflescollege.services;
 import java.util.ArrayList;
 
 import sg.iss.wafflescollege.model.Course;
+import sg.iss.wafflescollege.model.Enrollment;
 public interface EnrolmentService {
-	ArrayList<Course> findAllCourses();
-	Course findCourseById(String courseId);
-	int updateCourse(Course course);
-	int createCourse(Course course);
-	int removeCourse(Course course);
-	ArrayList<Course> findCoursesByCriteria(Course course);
+	ArrayList<Enrollment> findAllNewEnrolments();
+	Enrollment findNewEnrolmentById(String enrollmentId);
+	int approveEnrolment(Enrollment enrollment);
+	ArrayList<Enrollment> findNewEnrolmentsByCriteria(Enrollment enrollment);
+
+	Enrollment findEnrolmentById(String enrolmentId);
+	int updateEnrolment(Enrollment enrollment);
+	int createEnrolment(Enrollment enrollment);
+	int rejectEnrolment(Enrollment enrollment);
+	ArrayList<Enrollment> findEnrolmentsByCriteria(Enrollment enrollment);
 
 }
