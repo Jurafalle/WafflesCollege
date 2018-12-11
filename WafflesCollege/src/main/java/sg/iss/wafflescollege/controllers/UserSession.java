@@ -1,8 +1,12 @@
 package sg.iss.wafflescollege.controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
+
+import sg.iss.wafflescollege.model.Student;
 import sg.iss.wafflescollege.model.User;
 
 
@@ -12,15 +16,17 @@ public class UserSession {
 	
 	private String sessionId = null;
 	private User user = null;
+	private ArrayList<Student> student = null;
 	
 	public UserSession() {
 		super();
 	}
 
-	public UserSession(String sessionId, User user) {
+	public UserSession(String sessionId, User user, ArrayList<Student> student) {
 		super();
 		this.sessionId = sessionId;
 		this.user = user;
+		this.student = student;
 	}
 	
 
@@ -38,6 +44,13 @@ public class UserSession {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public ArrayList<Student> getStudent() {
+		return student;
+	}
+	public void setSubordinates(ArrayList<Student> student) {
+		this.student = student;
 	}
 
 	@Override
