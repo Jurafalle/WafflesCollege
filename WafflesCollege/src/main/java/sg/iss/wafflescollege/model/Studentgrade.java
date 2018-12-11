@@ -9,11 +9,10 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Studentgrade.findAll", query="SELECT s FROM Studentgrade s")
-public class Studentgrade implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
+@Table(name="studentgrade")
+public class Studentgrade{
+	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="STG_ID")
 	private int stgId;
 
@@ -63,6 +62,52 @@ public class Studentgrade implements Serializable {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+
+	@Override
+	public String toString() {
+		return "Studentgrade [stgId=" + stgId + ", stgGrade=" + stgGrade + ", course=" + course + ", student=" + student
+				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((course == null) ? 0 : course.hashCode());
+		result = prime * result + ((stgGrade == null) ? 0 : stgGrade.hashCode());
+		result = prime * result + stgId;
+		result = prime * result + ((student == null) ? 0 : student.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Studentgrade other = (Studentgrade) obj;
+		if (course == null) {
+			if (other.course != null)
+				return false;
+		} else if (!course.equals(other.course))
+			return false;
+		if (stgGrade == null) {
+			if (other.stgGrade != null)
+				return false;
+		} else if (!stgGrade.equals(other.stgGrade))
+			return false;
+		if (stgId != other.stgId)
+			return false;
+		if (student == null) {
+			if (other.student != null)
+				return false;
+		} else if (!student.equals(other.student))
+			return false;
+		return true;
 	}
 
 }
