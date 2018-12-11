@@ -11,6 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="enrollment")
+@NamedQuery(name="Enrollment.findAll", query="SELECT e FROM Enrollment e")
 public class Enrollment{
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
