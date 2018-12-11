@@ -22,11 +22,7 @@ public class CourseValidator implements Validator {
 	@Override
 	public void validate(Object arg0, Errors arg1) {
 		Course course = (Course) arg0;	
-		if ((course.getStartDate()!=null && course.getEndDate()!=null)&&(course.getStartDate().compareTo(course.getEndDate()) > 0)) {
-			arg1.reject("toDate", "End date should be greater than start date.");
-			arg1.rejectValue("toDate", "error.dates", "to date must be > from date");
 	
-		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "courseName", "error.courseName", "Course name is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "StartDate", "error.fromDate", "From Date is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "toDate", "error.toDate", "To Date is required.");
