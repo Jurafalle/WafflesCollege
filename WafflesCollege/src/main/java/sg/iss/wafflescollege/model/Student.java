@@ -1,148 +1,151 @@
 package sg.iss.wafflescollege.model;
 
 
-import java.util.Date;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+/**
+ * The persistent class for the student database table.
+ * 
+ */
 @Entity
-@Table(name = "student")
-public class Student {
+@NamedQuery(name="Student.findAll", query="SELECT s FROM Student s")
+public class Student implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	private String nric;
-	@Column(name = "nick_name")
-	private String nickName;
-	private int mark;
-	private String name;
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date dob;
-	@Column(name = "phone_number")
-	private int phoneNumber;
-	private String email;
-	private String address;
-	@Column(name = "user_name")
-	private String userName;
-	private String password;
-	//Constructors
+	@Column(name="STU_ID")
+	private String stuId;
+
+	@Column(name="STU_ADDRESS")
+	private String stuAddress;
+
+	@Column(name="STU_EMAIL")
+	private String stuEmail;
+
+	@Column(name="STU_FIRSTMIDNAME")
+	private String stuFirstmidname;
+
+	@Column(name="STU_LASTNAME")
+	private String stuLastname;
+
+	@Column(name="STU_PHONE_NO")
+	private String stuPhoneNo;
+
+	@Column(name="STU_STATUS")
+	private String stuStatus;
+
+	//bi-directional many-to-one association to Enrollment
+	@OneToMany(mappedBy="student")
+	private List<Enrollment> enrollments;
+
+	//bi-directional many-to-one association to Studentgrade
+	@OneToMany(mappedBy="student")
+	private List<Studentgrade> studentgrades;
+
 	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Student(String nric, String nickName, int mark, String name, Date dob, int phoneNumber, String email,
-			String address, String userName, String password) {
-		super();
-		this.nric = nric;
-		this.nickName = nickName;
-		this.mark = mark;
-		this.name = name;
-		this.dob = dob;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.address = address;
-		this.userName = userName;
-		this.password = password;
+	public String getStuId() {
+		return this.stuId;
 	}
-	//Getters & Setters
-	public String getNric() {
-		return nric;
+
+	public void setStuId(String stuId) {
+		this.stuId = stuId;
 	}
-	public void setNric(String nric) {
-		this.nric = nric;
+
+	public String getStuAddress() {
+		return this.stuAddress;
 	}
-	public String getNickName() {
-		return nickName;
+
+	public void setStuAddress(String stuAddress) {
+		this.stuAddress = stuAddress;
 	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+
+	public String getStuEmail() {
+		return this.stuEmail;
 	}
-	public int getMark() {
-		return mark;
+
+	public void setStuEmail(String stuEmail) {
+		this.stuEmail = stuEmail;
 	}
-	public void setMark(int mark) {
-		this.mark = mark;
+
+	public String getStuFirstmidname() {
+		return this.stuFirstmidname;
 	}
-	public String getName() {
-		return name;
+
+	public void setStuFirstmidname(String stuFirstmidname) {
+		this.stuFirstmidname = stuFirstmidname;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public String getStuLastname() {
+		return this.stuLastname;
 	}
-	public Date getDob() {
-		return dob;
+
+	public void setStuLastname(String stuLastname) {
+		this.stuLastname = stuLastname;
 	}
-	public void setDob(Date dob) {
-		this.dob = dob;
+
+	public String getStuPhoneNo() {
+		return this.stuPhoneNo;
 	}
-	public int getPhoneNumber() {
-		return phoneNumber;
+
+	public void setStuPhoneNo(String stuPhoneNo) {
+		this.stuPhoneNo = stuPhoneNo;
 	}
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+
+	public String getStuStatus() {
+		return this.stuStatus;
 	}
-	public String getEmail() {
-		return email;
+
+	public void setStuStatus(String stuStatus) {
+		this.stuStatus = stuStatus;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public List<Enrollment> getEnrollments() {
+		return this.enrollments;
 	}
-	public String getAddress() {
-		return address;
+
+	public void setEnrollments(List<Enrollment> enrollments) {
+		this.enrollments = enrollments;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+
+	public Enrollment addEnrollment(Enrollment enrollment) {
+		getEnrollments().add(enrollment);
+		enrollment.setStudent(this);
+
+		return enrollment;
 	}
-	public String getUserName() {
-		return userName;
+
+	public Enrollment removeEnrollment(Enrollment enrollment) {
+		getEnrollments().remove(enrollment);
+		enrollment.setStudent(null);
+
+		return enrollment;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public List<Studentgrade> getStudentgrades() {
+		return this.studentgrades;
 	}
-	public String getPassword() {
-		return password;
+
+	public void setStudentgrades(List<Studentgrade> studentgrades) {
+		this.studentgrades = studentgrades;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public Studentgrade addStudentgrade(Studentgrade studentgrade) {
+		getStudentgrades().add(studentgrade);
+		studentgrade.setStudent(this);
+
+		return studentgrade;
 	}
-	// Object Basics
-	@Override
-	public String toString() {
-		return "Student [nric=" + nric + ", nickName=" + nickName + ", mark=" + mark + ", name=" + name + ", dob=" + dob
-				+ ", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address + ", userName="
-				+ userName + ", password=" + password + "]";
+
+	public Studentgrade removeStudentgrade(Studentgrade studentgrade) {
+		getStudentgrades().remove(studentgrade);
+		studentgrade.setStudent(null);
+
+		return studentgrade;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nric == null) ? 0 : nric.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Student other = (Student) obj;
-		if (nric == null) {
-			if (other.nric != null)
-				return false;
-		} else if (!nric.equals(other.nric))
-			return false;
-		return true;
-	}
-	
-	
 
 }

@@ -1,95 +1,53 @@
 package sg.iss.wafflescollege.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the user database table.
+ * 
+ */
 @Entity
-@Table(name="userdb")
-public class User {
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	private long id;
-	private String username;
-	private String address;
-	private String email;
+	@Column(name="USE_ID")
+	private String useId;
+
+	@Column(name="USE_PASSWORD")
+	private String usePassword;
+
+	@Column(name="USE_ROLE")
+	private String useRole;
 
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public User(long id, String username, String address, String email) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.address = address;
-		this.email = email;
+	public String getUseId() {
+		return this.useId;
 	}
 
-	public User(String username, String address, String email) {
-		super();
-		this.username = username;
-		this.address = address;
-		this.email = email;
+	public void setUseId(String useId) {
+		this.useId = useId;
 	}
 
-	public long getId() {
-		return id;
+	public String getUsePassword() {
+		return this.usePassword;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUsePassword(String usePassword) {
+		this.usePassword = usePassword;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUseRole() {
+		return this.useRole;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUseRole(String useRole) {
+		this.useRole = useRole;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", address=" + address + ", email=" + email + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
-	
-	
 }
