@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="user")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User{
 	
 	@Id
