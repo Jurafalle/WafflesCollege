@@ -2,8 +2,10 @@ package sg.iss.wafflescollege.services;
 
 import java.util.ArrayList;
 
-import sg.iss.wafflescollege.model.Course;
+import org.springframework.stereotype.Service;
 
+import sg.iss.wafflescollege.model.Course;
+@Service
 public class CourseServiceImpl implements CourseService {
 
 	@Override
@@ -37,7 +39,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public ArrayList<Course> findCoursesByCriteria(Course course) {
+	public ArrayList<Course> findCoursesByCriteria(String criteria) {
 		// TODO Auto-generated method stub
 		return null;
 	}

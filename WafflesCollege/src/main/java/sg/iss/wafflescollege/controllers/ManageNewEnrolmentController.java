@@ -19,7 +19,7 @@ import sg.iss.wafflescollege.services.EnrollmentService;
 
 
 
-@RequestMapping(value = "/admin/managenewenrolment")
+@RequestMapping(value = "/admin/managenewenrollment")
 @Controller
 public class ManageNewEnrolmentController {
 	@Autowired
@@ -35,13 +35,13 @@ public class ManageNewEnrolmentController {
 		HashMap<Student, ArrayList<Enrollment>> hm = new HashMap<Student, ArrayList<Enrollment>>();
 		UserSession us = (UserSession) session.getAttribute("USERSESSION");
 		System.out.println(us.toString());
-		ModelAndView mav = new ModelAndView("login");
+		ModelAndView mav = new ModelAndView("MainPage");
 		if (us.getSessionId() != null) {
 			for (Student student : us.getStudent()) {
 				ArrayList<Enrollment> clist = cService.findNewEnrollmentById(student.getStuId());
 				hm.put(student, clist);
 		}
-			mav = new ModelAndView("manager-pending-course-history");
+			mav = new ModelAndView("ManageNewEnrollment");
 			mav.addObject("pendinghistory", hm);
 			return mav;
 		}
