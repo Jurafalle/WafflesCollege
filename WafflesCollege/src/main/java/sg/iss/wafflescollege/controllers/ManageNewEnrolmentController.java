@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import sg.iss.wafflescollege.model.Enrollment;
 import sg.iss.wafflescollege.model.Student;
-import sg.iss.wafflescollege.services.EnrolmentService;
+import sg.iss.wafflescollege.services.EnrollmentService;
 
 
 
@@ -23,7 +23,7 @@ import sg.iss.wafflescollege.services.EnrolmentService;
 @Controller
 public class ManageNewEnrolmentController {
 	@Autowired
-	private EnrolmentService cService;
+	private EnrollmentService cService;
 
 	
 	@InitBinder
@@ -38,7 +38,7 @@ public class ManageNewEnrolmentController {
 		ModelAndView mav = new ModelAndView("login");
 		if (us.getSessionId() != null) {
 			for (Student student : us.getStudent()) {
-				ArrayList<Enrollment> clist = cService.findNewEnrolmentById(student.getStuId());
+				ArrayList<Enrollment> clist = cService.findNewEnrollmentById(student.getStuId());
 				hm.put(student, clist);
 		}
 			mav = new ModelAndView("manager-pending-course-history");
