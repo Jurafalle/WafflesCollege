@@ -19,7 +19,7 @@ import sg.iss.wafflescollege.services.EnrollmentService;
 
 
 
-@RequestMapping(value = "/admin/managenewenrolment")
+@RequestMapping(value = "/admin/managenewenrollment")
 @Controller
 public class ManageNewEnrolmentController {
 	@Autowired

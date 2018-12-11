@@ -2,8 +2,10 @@ package sg.iss.wafflescollege.services;
 
 import java.util.ArrayList;
 
-import sg.iss.wafflescollege.model.Enrollment;
+import org.springframework.stereotype.Service;
 
+import sg.iss.wafflescollege.model.Enrollment;
+@Service
 public interface EnrollmentService {
 	ArrayList<Enrollment> findAllNewEnrollments();
 	ArrayList<Enrollment> findNewEnrollmentById(String enrollmentId);
