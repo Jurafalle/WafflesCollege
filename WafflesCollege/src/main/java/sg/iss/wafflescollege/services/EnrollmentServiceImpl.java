@@ -19,8 +19,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	@Override
 	@Transactional
 	public ArrayList<Enrollment> findAllNewEnrollments() {
-		// TODO Auto-generated method stub	
-		return enrollmentRepo.findAllNewEnrollments();
+		ArrayList<Enrollment> ulist = (ArrayList<Enrollment>)enrollmentRepo.findAllNewEnrollments();
+		return ulist;
 	}
 
 	@Override
