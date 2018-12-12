@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import sg.iss.wafflescollege.model.User;
 import sg.iss.wafflescollege.repo.UserRepository;
@@ -22,8 +23,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findUserById(Long id) {
-		return urepo.findById(id).get();
+	public User findUserById(String use_id) {
+		return urepo.findById(use_id).get();
 	}
 
 	@Override
@@ -49,5 +50,11 @@ public class UserServiceImpl implements UserService {
 		urepo.delete(u);
 		return 0;
 	}
-
+	
+	@Override
+	@Transactional
+	public User authenticate(String use_id, String use_password) {
+		User u = urepo.authenticateUserById(use_id, use_password);
+		return u;
+	}
 }
