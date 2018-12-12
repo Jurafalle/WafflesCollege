@@ -18,11 +18,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	
 	@Override
 	@Transactional
-	public ArrayList<Enrollment> findAllNewEnrollments() {
-		ArrayList<Enrollment> ulist = (ArrayList<Enrollment>)enrollmentRepo.findAllNewEnrollments();
-		return ulist;
-	}
-
+	 public ArrayList<Enrollment> findAllNewEnrollments() {
+  		 return enrollmentRepo.findAllNewEnrollments();
+   }
 
 	
 
