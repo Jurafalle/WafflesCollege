@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import sg.iss.wafflescollege.model.Course;
 
-public interface CourseRepository extends JpaRepository<Course, Integer> {
+public interface CourseRepository extends JpaRepository<Course, String> {
 	
 	@Query("SELECT c FROM Course c where c.lecturer.lecId = :lecId")
 	ArrayList<Course> findCourseByLEC_ID(@Param("lecId") String lecId);
