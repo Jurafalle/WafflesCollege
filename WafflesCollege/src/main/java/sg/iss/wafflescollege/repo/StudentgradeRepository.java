@@ -1,0 +1,16 @@
+package sg.iss.wafflescollege.repo;
+
+import java.util.ArrayList;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import sg.iss.wafflescollege.model.Studentgrade;
+
+public interface StudentgradeRepository extends JpaRepository<Studentgrade, Integer> {
+	
+	@Query("SELECT s FROM Studentgrade s where s.course.cseId = :cseId")
+	ArrayList<Studentgrade> findStudentgradeByCseId(@Param("cseId") String cseId);
+
+}
