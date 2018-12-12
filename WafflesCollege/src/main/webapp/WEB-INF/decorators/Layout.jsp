@@ -9,7 +9,7 @@
 	href="${ss}" />
 </head>
 <body>
-<h1> Student CRUD Demo</h1>
+<h1></h1>
 <%@include file="Menu.jsp"%>
 	<table style="width: 100%">
 		<tr>

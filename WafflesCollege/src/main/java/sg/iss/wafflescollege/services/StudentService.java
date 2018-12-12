@@ -7,7 +7,7 @@ import sg.iss.wafflescollege.model.Student;
 
 public interface StudentService {
 
-	Double CalculateCGPAByStudentID(String studentID);
+	Double CalculateCGPA(String studentID);
 	
 	Double convertGradeToGPA(String grade);
 

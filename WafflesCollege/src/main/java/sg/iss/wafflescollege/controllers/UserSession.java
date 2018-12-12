@@ -16,26 +16,28 @@ public class UserSession {
 	
 	private String sessionId = null;
 	private User user = null;
-	private ArrayList<User> users = null;
+	private ArrayList<Student> student = null;
+	private String userID = null;
 	
 	public UserSession() {
 		super();
 	}
 
-	public UserSession(String sessionId, User user, ArrayList<User> users) {
+	public UserSession(String sessionId, User user, ArrayList<Student> student, String userID) {
 		super();
 		this.sessionId = sessionId;
 		this.user = user;
-		this.users = users;
+		this.student = student;
+		this.userID = /*userID*/ "S1004";
 	}
 	
 
-	public ArrayList<User> getUsers() {
-		return users;
+	public String getUserID() {
+		return userID;
 	}
 
-	public void setUsers(ArrayList<User> users) {
-		this.users = users;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	public String getSessionId() {
@@ -54,7 +56,12 @@ public class UserSession {
 		this.user = user;
 	}
 	
-	
+	public ArrayList<Student> getStudent() {
+		return student;
+	}
+	public void setSubordinates(ArrayList<Student> student) {
+		this.student = student;
+	}
 
 	@Override
 	public int hashCode() {

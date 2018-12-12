@@ -8,40 +8,15 @@ import org.springframework.data.repository.query.Param;
 
 import sg.iss.wafflescollege.model.Student;
 import sg.iss.wafflescollege.model.Enrollment;
-import sg.iss.wafflescollege.model.Studentgrade;;
+import sg.iss.wafflescollege.model.Studentgrade;
+import sg.iss.wafflescollege.model.Course;
 
-public interface StudentRepository extends JpaRepository<Student, String> {
+public interface StudentRepository extends JpaRepository<Student, String> { 
  
-	@Query("SELECT \r\n" + 
-			"     s.STG_ID, c.CSE_CREDIT, s.STG_GRADE\r\n" + 
-			"FROM\r\n" + 
-			"    wafflescollege.course c,\r\n" + 
-			"    wafflescollege.studentgrade s,\r\n" + 
-			"    wafflescollege.enrollment e\r\n" + 
-			"WHERE\r\n" + 
-			"    e.STU_ID = s.STU_ID\r\n" + 
-			"        AND e.ENR_STATUS = 'Completed'\r\n" + 
-			"        AND c.CSE_ID = e.CSE_ID\r\n" + 
-			"        AND c.CSE_ID = s.CSE_ID\r\n" + 
-			"        AND e.STU_ID = :stuID\r\n" + 
-			"\r\n" + 
-			"ORDER BY s.STG_ID")
+	@Query("SELECT c.cseCredit FROM Course c, Studentgrade s, Enrollment e WHERE e.student = s.student AND e.enrStatus = 'Completed' AND c.cseId = e.course.cseId AND c.cseId = s.course.cseId AND e.student.stuId = :stuID ORDER BY s.stgId")
 	Double[] GPACourseCredits(@Param("stuID") String stuID);
 
-	@Query("SELECT \r\n" + 
-			"     s.STG_ID, c.CSE_CREDIT, s.STG_GRADE\r\n" + 
-			"FROM\r\n" + 
-			"    wafflescollege.course c,\r\n" + 
-			"    wafflescollege.studentgrade s,\r\n" + 
-			"    wafflescollege.enrollment e\r\n" + 
-			"WHERE\r\n" + 
-			"    e.STU_ID = s.STU_ID\r\n" + 
-			"        AND e.ENR_STATUS = 'Completed'\r\n" + 
-			"        AND c.CSE_ID = e.CSE_ID\r\n" + 
-			"        AND c.CSE_ID = s.CSE_ID\r\n" + 
-			"        AND e.STU_ID = :stuID\r\n" + 
-			"\r\n" + 
-			"ORDER BY s.STG_ID")
+	@Query("SELECT s.stgGrade FROM Course c, Studentgrade s, Enrollment e WHERE e.student = s.student AND e.enrStatus = 'Completed' AND c.cseId = e.course.cseId AND c.cseId = s.course.cseId AND e.student.stuId = :stuID ORDER BY s.stgId")
 	String[] GPAGrades(@Param("stuID") String stuID);
 	
 }

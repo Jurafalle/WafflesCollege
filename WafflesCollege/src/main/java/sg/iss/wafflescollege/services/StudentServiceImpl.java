@@ -23,7 +23,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	@Transactional
-	public Double CalculateCGPAByStudentID(String studentID) {
+	public Double CalculateCGPA(String studentID) {
+		
 		Double[] Credits = sRepo.GPACourseCredits(studentID);
 		String[] Grades = sRepo.GPAGrades(studentID);
 		Double G = 0.0;

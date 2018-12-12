@@ -26,7 +26,7 @@
        <a href="ManageStudents.jsp" class="sidebar-button">Manage Students</a>
        <a href="ManageLecturers.jsp" class="sidebar-button">Manage Lecturers</a>
        <a href="ManageCourses.jsp" class="sidebar-button"><b>Manage Courses</b></a>
-       <a href="ManageEnrolment.jsp" class="sidebar-button">Manage Enrolment</a>
+       <a href="ManageEnrolment.jsp" class="sidebar-button">Manage Enrollment</a>
        <a href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
   </nav>
   
