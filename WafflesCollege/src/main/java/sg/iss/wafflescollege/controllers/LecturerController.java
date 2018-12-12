@@ -66,12 +66,9 @@ public class LecturerController {
 	
 	@RequestMapping(value = "/studentsofspecificcourse/{cseId}")
 	public ModelAndView studentPerformancePage(@PathVariable String cseId) {
-		ArrayList<Enrollment> enrollments =lService.findSpecificCourseEnrollment(cseId);
-		ArrayList<Student> students=new ArrayList<Student>();
-		for (Enrollment enrollment : enrollments) {
-			String cid = enrollment.getCourse().getCseId();
-			
-		}
+		ArrayList<Student> students=lService.findSpecificCourseStudents(cseId);
+		ModelAndView mav=new ModelAndView("ViewAStudentPerformance", "students", students);
+		return mav;
 	}
 
 }
