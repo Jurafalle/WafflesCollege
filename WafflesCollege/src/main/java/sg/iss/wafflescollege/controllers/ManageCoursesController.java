@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import sg.iss.demo.exception.StudentNotFound;
+import sg.iss.demo.model.Student;
+import sg.iss.wafflescollege.exception.CourseNotFound;
 import sg.iss.wafflescollege.model.Course;
 import sg.iss.wafflescollege.services.CourseService;
-import sg.iss.wafflescollege.services.LecturerService;
+
 import sg.iss.wafflescollege.validator.CourseValidator;
 
 @RequestMapping(value = "/admin/managecourses")
@@ -28,8 +31,7 @@ public class ManageCoursesController {
 
 	@Autowired
 	private CourseService cService;
-	@Autowired
-	private LecturerService lService;
+	
 	@Autowired
 	private CourseValidator cValidator;
 
@@ -63,7 +65,7 @@ public class ManageCoursesController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/load", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView courseListPage() {
 		ModelAndView mav = new ModelAndView("LoadCourses", "course", new Course());
 		List<Course> CourseList = cService.findAllCourses();
@@ -72,10 +74,35 @@ public class ManageCoursesController {
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public ModelAndView editDepartmentPage(@PathVariable String id) {
-		ModelAndView mav = new ModelAndView("course-edit");
-		List<Course> CourseList = cService.findCoursesByCriteria(id);
-		mav.addObject("course", CourseList);
+	public ModelAndView editStudentPage(@PathVariable String id) {
+		ModelAndView mav = new ModelAndView("EditCourse");
+		mav.addObject("student", cService.findCourseById(id));
+		return mav;
+	}
+
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView editStudent(@ModelAttribute @Valid Course course, @PathVariable String nric,
+			BindingResult result, final RedirectAttributes redirectAttributes) throws StudentNotFound {
+		System.out.println("Course"+course.toString());
+		if (result.hasErrors())
+			return new ModelAndView("StudentFormEdit");
+		sService.updateStudent(student);
+		ModelAndView mav = new ModelAndView("redirect:/student/list");
+		String message = "Student" + student.getNric() + " was successfully updated.";
+		redirectAttributes.addFlashAttribute("message", message);
+		return mav;
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public ModelAndView deleteCourse(@PathVariable String id, final RedirectAttributes redirectAttributes)
+			throws CourseNotFound {
+
+		ModelAndView mav = new ModelAndView("redirect:/admin/managecourses/list");
+		Course course = cService.findCourseById(id);
+		cService.removeCourse(course);
+		String message = "Course " + course.getCseId() + " was successfully deleted.";
+
+		redirectAttributes.addFlashAttribute("message", message);
 		return mav;
 	}
 	

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -27,47 +28,47 @@
   </nav>
   
   <article>
-    <h1>Manage Students</h1>
-    <a href="${pageContext.request.contextPath}/course/create">Add New Course </a>
+<form:form method="POST" modelAttribute="course"
+	action="${pageContext.request.contextPath}/admin/managecourses/courses/edit/${course.cseId}">
+		<center>
+			<table cellpadding=4 cellspacing=2 border=0>
+				<tr>
+					<th width="45%">Description</th>
+					<th width="55%">Detail</th>
+				</tr>
+				<tr>
+				   <td><s:message code="label.course.cseId" /> *</td>
+				   <td><form:input path="Course ID"/></td>
+				 </tr>
+				<tr>
+				   <td><s:message code="label.course.cseDesc" /></td>
+				   <td><form:input path="Decription"/></td>
+				 </tr>
+				<tr>
+				   <td><s:message code="label.course.cseCredit" /></td>
+				   <td><form:input path="Credits"/></td>
+				 </tr>
+				<tr>
+				   <td><s:message code="label.course.cseMaxSize" /></td>
+				   <td><form:input path="Maximum Size"/></td>
+				 </tr>
+				<tr>
+				   <td><s:message code="label.course.cseStartdate" /></td>
+				   <td><form:input path="Course Start Date"/></td>
+				 </tr>
+				<tr>
+				   <td><s:message code="label.course.cseStatus" /></td>
+				   <td><form:input path="Course Status"/></td>
+				 </tr>
+				 <tr>
+				 <td><input type="submit" value="Submit"> </td>
+				 <td><input type="reset" value="Reset"></td>
+				 </tr>
+		</table>
+		</center>
 	
-<c:if test="${fn:length(CourseList) gt 0}">
-	<br />
-	<br />
-	<table class="borderAll">
-		<tr>
-			<th><s:message code="Number" /></th>
-			<th><s:message code="Course ID" /></th>
-			<th><s:message code="Course Name" /></th>
-			<th><s:message code="Credits" /></th>
-			<th><s:message code="Course Max Size" /></th>
-			<th><s:message code="Course Start Date" /></th>
-			<th><s:message code="Course Status" /></th>
-			<th><s:message code="Edit Course" /></th>
-			<th><s:message code="Delete Course" /></th>
-		</tr>
-		<c:forEach var="course" items="${CourseList}" varStatus="status">
-			<tr class="${status.index%2==0?'even':'odd'}">
-				<td class="nowrap">${status.index}</td>
-				<td class="nowrap">${course.cseId}</td>
-				<td class="nowrap">${course.cseDesc}</td>
-				<td class="nowrap">${course.cseCredit}</td>
-				<td class="nowrap">${course.cseMaxSize}</td>
-				<td class="nowrap"><fmt:formatDate value="${course.cseStartdate}" pattern="MM.dd.yyyy" /></td>
-				<td class="nowrap">${course.cseStatus}</td>
-				<td align="center"><a
-					href="${pageContext.request.contextPath}/admin/managecourses/courses/edit/${course.cseId}">
-						<s:message code="Edit" />
-				</a></td>
-				<td><a
-					href="${pageContext.request.contextPath}/courses/delete/${course.cseId}">
-					<s:message
-							code="Delete" /></a></td>
-
-			</tr>
-		</c:forEach>
-	</table>
-</c:if>
-
+	</form:form>
+</body>
    </article>
    </div>
 </section>
