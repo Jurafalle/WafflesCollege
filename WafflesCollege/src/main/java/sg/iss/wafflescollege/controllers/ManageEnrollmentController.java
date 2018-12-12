@@ -27,7 +27,7 @@ import sg.iss.wafflescollege.services.EnrollmentService;
 @Controller
 public class ManageEnrollmentController {
 	
-	@Autowired
+	@Autowired 
 	EnrollmentService eService;
 	//@Autowired
 	//private StudentValidator sValidator;
