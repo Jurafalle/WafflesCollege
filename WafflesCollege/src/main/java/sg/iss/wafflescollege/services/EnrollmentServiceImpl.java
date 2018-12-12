@@ -25,9 +25,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
 	@Override
 	@Transactional
-	public Enrollment findNewEnrollmentById(String sId) {
+	public ArrayList<Enrollment> findNewEnrollmentById(String sId) {
 		// TODO Auto-generated method stub //??
-		return enrollmentRepo.findEnrollmentBysID(sId).get(0);
+		return enrollmentRepo.findEnrollmentBysID(sId);
 	}
 
 	@Override
@@ -45,9 +45,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	@Override
-	public Enrollment findEnrollmentById(String sId) {
+	public ArrayList<Enrollment> findEnrollmentById(String sId) {
 		// TODO Auto-generated method stub
-		return enrollmentRepo.findEnrollmentBysID(sId).get(0);
+		return enrollmentRepo.findEnrollmentBysID(sId);
 	}
 
 	@Override
