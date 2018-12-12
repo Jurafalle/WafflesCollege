@@ -8,15 +8,16 @@ import sg.iss.wafflescollege.model.Enrollment;
 @Service
 public interface EnrollmentService {
 	ArrayList<Enrollment> findAllNewEnrollments();
-	ArrayList<Enrollment> findNewEnrollmentById(String enrollmentId);
-	int approveEnrollment(Enrollment enrollment);
+	Enrollment findNewEnrollmentById(String sId);
+	Enrollment approveEnrollment(Enrollment enrollment);
 	ArrayList<Enrollment> findNewEnrollmentsByCriteria(Enrollment enrollment);
 
-	Enrollment findEnrollmentById(String enrollmentId);
-	int updateEnrollment(Enrollment enrollment);
-	int createEnrollment(Enrollment enrollment);
-	int rejectEnrollment(Enrollment enrollment);
+	Enrollment findEnrollmentById(String sId);
+	Enrollment updateEnrollment(Enrollment enrollment);
+	Enrollment createEnrollment(Enrollment enrollment);
+	Enrollment rejectEnrollment(Enrollment enrollment);
 	ArrayList<Enrollment> findEnrollmentsByCriteria(Enrollment enrollment);
 
 
+	
 }
