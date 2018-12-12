@@ -46,6 +46,7 @@ public class ManageNewEnrollmentController {
    	 mav.addObject("approve", new sg.iss.wafflescollege.javabeans.Approve());
    	 return mav;
     }
+    
     @RequestMapping(value = "/new/edit/{id}", method = RequestMethod.POST)
     public ModelAndView approveOrRejectCourse(@ModelAttribute("approve") sg.iss.wafflescollege.javabeans.Approve approve, BindingResult result,
    		 @PathVariable Integer id, HttpSession session, final RedirectAttributes redirectAttributes) {

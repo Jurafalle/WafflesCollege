@@ -1,5 +1,5 @@
 package sg.iss.wafflescollege.javabeans;
-
+ 
 public class Approve {
     private String decision;
     private String comment;
