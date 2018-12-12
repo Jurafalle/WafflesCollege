@@ -67,6 +67,15 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 
+
+
+	@Override
+	public Enrollment findEnrollmentById(Integer eId) {
+		// TODO Auto-generated method stub
+		return enrollmentRepo.findById(eId).get();
+	}
+
+
 	}
 
 
