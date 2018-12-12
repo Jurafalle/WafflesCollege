@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 
 import sg.iss.wafflescollege.model.Enrollment;
 
-public interface EnrollmentRepository extends JpaRepository<Enrollment,Integer> {
+public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer> {
 
 	@Query("select e from Enrollment e where e.enrStatus ='Pending'")
 	ArrayList<Enrollment> findAllNewEnrollments();
-	
 
+	@Query("SELECT e FROM Enrollment e where e.course.cseId = :cseId")
+	ArrayList<Enrollment> findEnrollmentByCseId(@Param("cseId") String cseId);
 }
