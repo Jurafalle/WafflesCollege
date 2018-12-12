@@ -48,9 +48,11 @@
 
 						<tr class="listHeading">
 							<th>Course ID</th>
-							<th>Course Name</th>
+							<th>Course Credit</th>
+							<th>Description</th>
 							<th>Max Size</th>
-							<th><spring:message code="caption.delete" /></th>
+							<th>Start Date</th>
+							<th>Status</th>
 						</tr>
 
 
