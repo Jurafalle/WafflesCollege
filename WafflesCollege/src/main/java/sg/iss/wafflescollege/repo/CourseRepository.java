@@ -11,7 +11,7 @@ import sg.iss.wafflescollege.model.Course;
 public interface CourseRepository extends JpaRepository<Course, String> {
 	
 	@Query("SELECT c FROM Course c where c.lecturer.lecId = :lecId")
-	ArrayList<Course> findCourseByLEC_ID(@Param("lecId") String lecId);
+	ArrayList<Course> findCourseByLecId(@Param("lecId") String lecId);
 	
 	@Query("SELECT c FROM Course c where c.cseId = :cseId")
 	Course findCourseByCSE_ID(@Param("cseId") String cseId);
