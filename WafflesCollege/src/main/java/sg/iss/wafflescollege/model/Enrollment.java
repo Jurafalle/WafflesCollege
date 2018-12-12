@@ -77,5 +77,10 @@ public class Enrollment implements Serializable {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	
+    public void setStatus(String enrStatus) {
+      	 this.enrStatus = enrStatus;
+       }
+
 
 }
