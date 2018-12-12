@@ -32,7 +32,7 @@
   
   <article>
     <h1>Lecturer's Courses</h1>
-    <p>Codes go here.</p>
+    <p>Codes go here. </p>
 
    </article>
    </div>
