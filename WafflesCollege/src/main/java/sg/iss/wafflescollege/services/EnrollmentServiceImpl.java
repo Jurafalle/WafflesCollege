@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import sg.iss.wafflescollege.model.Enrollment;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -12,60 +13,70 @@ import sg.iss.wafflescollege.repo.EnrollmentRepository;
 public class EnrollmentServiceImpl implements EnrollmentService {
 
 	@Resource
-	private EnrollmentRepository enromentRepository;
+	private EnrollmentRepository enrollmentRepo;
+	
 	
 	@Override
+	@Transactional
 	public ArrayList<Enrollment> findAllNewEnrollments() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub	
+		return enrollmentRepo.findAllNewEnrollments();
 	}
 
 	@Override
-	public ArrayList<Enrollment> findNewEnrollmentById(String enrollmentId) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Enrollment findNewEnrollmentById(String sId) {
+		// TODO Auto-generated method stub //??
+		return enrollmentRepo.findEnrollmentBysID(sId).get(0);
 	}
 
 	@Override
-	public int approveEnrollment(Enrollment enrollment) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	@Transactional
+	public Enrollment approveEnrollment(Enrollment enrollment) {
+		return enrollmentRepo.saveAndFlush(enrollment);
+		}
+	
 
 	@Override
+	@Transactional
 	public ArrayList<Enrollment> findNewEnrollmentsByCriteria(Enrollment enrollment) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub//??
 		return null;
 	}
 
 	@Override
-	public Enrollment findEnrollmentById(String enrolmentId) {
+	public Enrollment findEnrollmentById(String sId) {
 		// TODO Auto-generated method stub
-		return null;
+		return enrollmentRepo.findEnrollmentBysID(sId).get(0);
 	}
 
 	@Override
-	public int updateEnrollment(Enrollment enrollment) {
+	@Transactional
+	public Enrollment updateEnrollment(Enrollment enrollment) {
 		// TODO Auto-generated method stub
-		return 0;
+		return enrollmentRepo.saveAndFlush(enrollment);
 	}
 
 	@Override
-	public int createEnrollment(Enrollment enrollment) {
+	@Transactional
+	public Enrollment createEnrollment(Enrollment enrollment) {
 		// TODO Auto-generated method stub
-		return 0;
+		return enrollmentRepo.saveAndFlush(enrollment);
 	}
 
 	@Override
-	public int rejectEnrollment(Enrollment enrollment) {
+	@Transactional
+	public Enrollment rejectEnrollment(Enrollment enrollment) {
 		// TODO Auto-generated method stub
-		return 0;
+		return enrollmentRepo.saveAndFlush(enrollment);
 	}
 
 	@Override
+	@Transactional
 	public ArrayList<Enrollment> findEnrollmentsByCriteria(Enrollment enrollment) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub//??
 		return null;
 	}
+	}
 
-}
+
