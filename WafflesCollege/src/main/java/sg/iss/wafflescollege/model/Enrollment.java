@@ -13,7 +13,8 @@ import java.util.Date;
 @NamedQuery(name="Enrollment.findAll", query="SELECT e FROM Enrollment e")
 public class Enrollment implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	public static final String APPROVED ="Äpproved";
+	public static final String REJECTED ="Rejected";
 	@Id
 	@Column(name="ENR_ID")
 	private int enrId;
