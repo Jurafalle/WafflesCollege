@@ -15,9 +15,8 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer>
 
 	@Query("SELECT e FROM Enrollment e where e.course.cseId = :cseId")
 	ArrayList<Enrollment> findEnrollmentByCseId(@Param("cseId") String cseId);
+
+	@Query("select e from Enrollment e where e.enrId = :eid")
+	ArrayList<Enrollment> findEnrollmentById(@Param("eid") String eid);
 	
-
-	    @Query("select e from Enrollment e where e.enrId = :eid")
-	    ArrayList<Enrollment> findEnrollmentById(@Param("eid") String eid);
-
 }
