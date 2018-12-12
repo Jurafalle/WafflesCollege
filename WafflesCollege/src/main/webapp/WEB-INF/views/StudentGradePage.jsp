@@ -31,7 +31,7 @@
   </nav>
   
   <article>
-    <h1>Student's Grade under Specific Course</h1>
+    <h1>Student's Grade under Specific Course </h1>
     <p>Codes go here. </p>
 
    </article>
