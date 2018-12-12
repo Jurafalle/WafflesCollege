@@ -1,6 +1,6 @@
 package sg.iss.wafflescollege.model;
 
-
+import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,10 +11,10 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="course")
 @NamedQuery(name="Course.findAll", query="SELECT c FROM Course c")
-public class Course{
-	
+public class Course implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="CSE_ID")
 	private String cseId;
@@ -129,7 +129,6 @@ public class Course{
 		return enrollment;
 	}
 
-	
 	public List<Studentgrade> getStudentgrades() {
 		return this.studentgrades;
 	}
@@ -152,81 +151,4 @@ public class Course{
 		return studentgrade;
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + cseCredit;
-		result = prime * result + ((cseDesc == null) ? 0 : cseDesc.hashCode());
-		result = prime * result + ((cseId == null) ? 0 : cseId.hashCode());
-		result = prime * result + cseMaxSize;
-		result = prime * result + ((cseStartdate == null) ? 0 : cseStartdate.hashCode());
-		result = prime * result + ((cseStatus == null) ? 0 : cseStatus.hashCode());
-		result = prime * result + ((enrollments == null) ? 0 : enrollments.hashCode());
-		result = prime * result + ((lecturer == null) ? 0 : lecturer.hashCode());
-		result = prime * result + ((studentgrades == null) ? 0 : studentgrades.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Course other = (Course) obj;
-		if (cseCredit != other.cseCredit)
-			return false;
-		if (cseDesc == null) {
-			if (other.cseDesc != null)
-				return false;
-		} else if (!cseDesc.equals(other.cseDesc))
-			return false;
-		if (cseId == null) {
-			if (other.cseId != null)
-				return false;
-		} else if (!cseId.equals(other.cseId))
-			return false;
-		if (cseMaxSize != other.cseMaxSize)
-			return false;
-		if (cseStartdate == null) {
-			if (other.cseStartdate != null)
-				return false;
-		} else if (!cseStartdate.equals(other.cseStartdate))
-			return false;
-		if (cseStatus == null) {
-			if (other.cseStatus != null)
-				return false;
-		} else if (!cseStatus.equals(other.cseStatus))
-			return false;
-		if (enrollments == null) {
-			if (other.enrollments != null)
-				return false;
-		} else if (!enrollments.equals(other.enrollments))
-			return false;
-		if (lecturer == null) {
-			if (other.lecturer != null)
-				return false;
-		} else if (!lecturer.equals(other.lecturer))
-			return false;
-		if (studentgrades == null) {
-			if (other.studentgrades != null)
-				return false;
-		} else if (!studentgrades.equals(other.studentgrades))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Course [cseId=" + cseId + ", cseCredit=" + cseCredit + ", cseDesc=" + cseDesc + ", cseMaxSize="
-				+ cseMaxSize + ", cseStartdate=" + cseStartdate + ", cseStatus=" + cseStatus + ", lecturer=" + lecturer
-				+ ", enrollments=" + enrollments + ", studentgrades=" + studentgrades + "]";
-	}
-	
-	
-	
 }
