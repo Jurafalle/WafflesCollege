@@ -37,8 +37,8 @@
     <h1>Manage Enrollment</h1>
     <p>
     <h1>This is new Enrollment page</h1>
-  <form:form action="${pageContext.request.contextPath}/admin/manageenrollment/create" method="POST" modelAttribute="enrollment">
-    Enrollment ID: <form:input path="enrId" size="10" /> <br/>
+  <form:form action="${pageContext.request.contextPath}/admin/manageenrolment/edit/{enrollmentId}" method="POST" modelAttribute="enrollment">
+    Enrollment ID: <form:input path="enrId" size="10" readonly="true" /> <br/>
     Enrollment Date: <form:input path="enrDate" size="10" /> <br/>
     Enrollment Status: <form:input path="enrStatus" size="10" /> <br/>
     Course ID: <form:input path="course.cseId" size="40"/> <br/>

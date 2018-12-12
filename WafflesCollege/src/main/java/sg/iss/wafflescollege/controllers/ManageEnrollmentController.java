@@ -22,9 +22,9 @@ import sg.iss.wafflescollege.model.Enrollment;
 import sg.iss.wafflescollege.services.EnrollmentService;
 
 
-
-@RequestMapping(value = "/admin/manageenrolment")
 @Controller
+@RequestMapping(value = "/admin/manageenrolment")
+
 public class ManageEnrollmentController {
 	
 	@Autowired 
@@ -57,15 +57,15 @@ public class ManageEnrollmentController {
 		ArrayList<Enrollment> elist = eService.findAllEnrollments();
 		ModelAndView mav = new ModelAndView("ManageEnrolment");
 		
-		mav.addObject("enrollments", elist);
+		mav.addObject("enrollment", elist);
 		return mav;
 		
 	}
 
 	@RequestMapping(value = "/edit/{enrollmentId}", method = RequestMethod.GET)
 	public ModelAndView editStudentPage(@PathVariable Integer enrollmentId) {
-		ModelAndView mav = new ModelAndView("StudentFormEdit");
-		mav.addObject("enrollments", eService.findEnrollmentById(enrollmentId));
+		ModelAndView mav = new ModelAndView("EnrollmentFormEdit");
+		mav.addObject("enrollment", eService.findEnrollmentById(enrollmentId));
 		return mav;
 	}
 
@@ -74,7 +74,7 @@ public class ManageEnrollmentController {
 		eService.updateEnrollment(enrollment);
 		ArrayList<Enrollment> elist = eService.findAllEnrollments();
 		ModelAndView mav = new ModelAndView("ManageEnrolment");
-		mav.addObject("enrollments", elist);
+		mav.addObject("enrollment", elist);
 		return mav;
 	}
 
