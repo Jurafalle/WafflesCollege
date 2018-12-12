@@ -9,7 +9,7 @@ import sg.iss.wafflescollege.model.Enrollment;
 public interface EnrollmentService {
 	ArrayList<Enrollment> findAllNewEnrollments();
 	Enrollment approveEnrollment(Enrollment enrollment);
-	Enrollment findEnrollmentById(Integer enrolmentId);
+	Enrollment findEnrollmentById (Integer enrolmentId);
 
 	ArrayList<Enrollment> findAllEnrollments();
 	Enrollment updateEnrollment(Enrollment enrollment);

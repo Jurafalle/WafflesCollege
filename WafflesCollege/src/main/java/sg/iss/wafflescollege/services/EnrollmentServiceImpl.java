@@ -61,6 +61,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
 
 	@Override
+	@Transactional
 	public ArrayList<Enrollment> findAllEnrollments() {
 		// TODO Auto-generated method stub
 		return (ArrayList<Enrollment>) enrollmentRepo.findAll();
@@ -70,6 +71,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
 
 	@Override
+	@Transactional
 	public Enrollment findEnrollmentById(Integer eId) {
 		// TODO Auto-generated method stub
 		return enrollmentRepo.findById(eId).get();
