@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,43 +27,42 @@
 <section>
 <div class="col-container">
   <nav>
-       <a href="ManageStudents.jsp" class="sidebar-button">Manage Students</a>
-       <a href="ManageLecturers.jsp" class="sidebar-button">Manage Lecturers</a>
-       <a href="ManageCourses.jsp" class="sidebar-button">Manage Courses</a>
-       <a href="ManageEnrolment.jsp" class="sidebar-button"><b>Manage Enrolment</b></a>
-       <a href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
+   	<a href="ManageStudents.jsp" class="sidebar-button">Manage Students</a>
+   	<a href="ManageLecturers.jsp" class="sidebar-button">Manage Lecturers</a>
+   	<a href="ManageCourses.jsp" class="sidebar-button">Manage Courses</a>
+   	<a href="ManageEnrolment.jsp" class="sidebar-button"><b>Manage Enrolment</b></a>
+   	<a href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
   </nav>
-  
+ 
   <article>
-    <h1>Manage Enrollment</h1>
-    <p>Codes go here.</p>
-    <c:forEach var="enrollment" items="${pageContext.request.contextPath}">
-		<c:if test="${fn:length(entry.value) gt 0}">
-			<spring:message code="fieldLabel.name" /> : <c:out
-				value="${entry.key.name}" />
-			<br />
-			<table style="cellspacing: 2; cellpadding: 2; border: 1;">
-				<tr>
-					<th><spring:message code="fieldLabel.enrollment.enrId" /></th>
-					<th><spring:message code="fieldLabel.enrollment.student" /></th>
-					<th><spring:message code="fieldLabel.enrollment.course" /></th>
-					<th><spring:message code="fieldLabel.enrollment.enrDate" /></th>
-					<th><spring:message code="fieldLabel.enrollment.enrStatus" /></th>
+	<h1>Manage Enrollment</h1>
 
-				</tr>
-				<c:forEach var="enrollment" items="${enrollment}" varStatus="status">
-					<tr>
-						<td>${enrollment.enrId}</td>
-						<td>${enrollment.student}</td>
-						<td>${enrollment.course}</td>
-						<td>${enrollment.enrDate}</td>
-						<td>${enrollment.enrStatus}</td>
-
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-	</c:forEach>
+	<c:if test="${fn:length(enrollment) gt 0}">
+    <br />
+    <br />
+    <table>
+   	 <tr>
+   		 <th><spring:message code="label.enrollment.enrId" /></th>
+   		 <th><spring:message code="label.enrollment.stuId" /></th>
+   		 <th><spring:message code="label.enrollment.course" /></th>
+   		 <th><spring:message code="label.enrollment.enrDate" /></th>
+   		 <th><spring:message code="label.enrollment.enrStatus" /></th>
+   		 </tr>
+   	 <c:forEach var="enrollment" items="${enrollment}" varStatus="status">
+   		 <tr>
+   			 <td>${enrollment.enrId}</td>
+   			 <td>${enrollment.student.stuId}</td>
+   			 <td>${enrollment.course.cseId}</td>
+   			 <td>${enrollment.enrDate}</td>
+   			 <td>${enrollment.enrStatus}</td>
+   			 <td><c:url
+   							 value="/admin/managenewenrollment/new/display/${enrollment.enrId}.html" var="d" />
+   						 <a href="${d}"><spring:message code="caption.detail" /></a></td>
+    
+   		 </tr>
+   	 </c:forEach>
+   		 </table>
+   	 </c:if>
 
    </article>
    </div>
