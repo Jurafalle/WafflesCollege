@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import sg.iss.demo.exception.StudentNotFound;
-import sg.iss.demo.model.Student;
 import sg.iss.wafflescollege.exception.CourseNotFound;
 import sg.iss.wafflescollege.model.Course;
 import sg.iss.wafflescollege.services.CourseService;
@@ -74,21 +72,21 @@ public class ManageCoursesController {
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public ModelAndView editStudentPage(@PathVariable String id) {
+	public ModelAndView editCoursePage(@PathVariable String id) {
 		ModelAndView mav = new ModelAndView("EditCourse");
 		mav.addObject("student", cService.findCourseById(id));
 		return mav;
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public ModelAndView editStudent(@ModelAttribute @Valid Course course, @PathVariable String nric,
-			BindingResult result, final RedirectAttributes redirectAttributes) throws StudentNotFound {
+	public ModelAndView editCourse(@ModelAttribute @Valid Course course, @PathVariable String id,
+			BindingResult result, final RedirectAttributes redirectAttributes) throws CourseNotFound {
 		System.out.println("Course"+course.toString());
 		if (result.hasErrors())
-			return new ModelAndView("StudentFormEdit");
-		sService.updateStudent(student);
-		ModelAndView mav = new ModelAndView("redirect:/student/list");
-		String message = "Student" + student.getNric() + " was successfully updated.";
+			return new ModelAndView("EditCourse");
+		cService.updateCourse(course);
+		ModelAndView mav = new ModelAndView("redirect:/admin/managecourses/list");
+		String message = "Course" + course.getCseId() + " was successfully updated.";
 		redirectAttributes.addFlashAttribute("message", message);
 		return mav;
 	}
