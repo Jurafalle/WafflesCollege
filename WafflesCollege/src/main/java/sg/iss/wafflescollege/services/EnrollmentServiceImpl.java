@@ -19,16 +19,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	@Override
 	@Transactional
 	public ArrayList<Enrollment> findAllNewEnrollments() {
-		// TODO Auto-generated method stub	
-		return enrollmentRepo.findAllNewEnrollments();
+		ArrayList<Enrollment> ulist = (ArrayList<Enrollment>)enrollmentRepo.findAllNewEnrollments();
+		return ulist;
 	}
 
-	@Override
-	@Transactional
-	public Enrollment findNewEnrollmentById(String sId) {
-		// TODO Auto-generated method stub //??
-		return enrollmentRepo.findEnrollmentBysID(sId).get(0);
-	}
+
+	
 
 	@Override
 	@Transactional
@@ -37,18 +33,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		}
 	
 
-	@Override
-	@Transactional
-	public ArrayList<Enrollment> findNewEnrollmentsByCriteria(Enrollment enrollment) {
-		// TODO Auto-generated method stub//??
-		return null;
-	}
 
-	@Override
-	public Enrollment findEnrollmentById(String sId) {
-		// TODO Auto-generated method stub
-		return enrollmentRepo.findEnrollmentBysID(sId).get(0);
-	}
+
 
 	@Override
 	@Transactional
@@ -71,12 +57,16 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 		return enrollmentRepo.saveAndFlush(enrollment);
 	}
 
+
+
+
 	@Override
-	@Transactional
-	public ArrayList<Enrollment> findEnrollmentsByCriteria(Enrollment enrollment) {
-		// TODO Auto-generated method stub//??
-		return null;
+	public ArrayList<Enrollment> findAllEnrollments() {
+		// TODO Auto-generated method stub
+		return (ArrayList<Enrollment>) enrollmentRepo.findAll();
 	}
+
+
 	}
 
 
