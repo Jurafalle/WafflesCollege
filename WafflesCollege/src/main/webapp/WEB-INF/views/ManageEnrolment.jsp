@@ -59,8 +59,8 @@
    			 <td>${enrollment.enrDate}</td>
    			 <td>${enrollment.enrStatus}</td>
    			 <td><c:url
-   							 value="/admin/managenewenrollment/new/display/${enrollment.enrId}.html" var="d" />
-   						 <a href="${d}"><spring:message code="caption.detail" /></a></td>
+   							 value="/admin/manageenrollment/edit/${enrollment.enrId}" var="d" />
+   						 <a href="${d}"><spring:message code="caption.update" /></a></td>
     
    		 </tr>
    	 </c:forEach>

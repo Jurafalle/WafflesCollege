@@ -40,7 +40,7 @@ public class ManageEnrollmentController {
 		ModelAndView mav = new ModelAndView("ManageEnrolment");
 		ArrayList<Enrollment> enrollments = eService.findAllEnrollments();
 		mav.addObject("enrollments", enrollments);
-		return mav;
+		return mav;	
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
