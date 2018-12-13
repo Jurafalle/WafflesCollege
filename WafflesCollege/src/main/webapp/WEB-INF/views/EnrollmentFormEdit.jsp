@@ -84,10 +84,10 @@
 							</tr>
 
 							<tr>
-								<td><form:button name="submit" type="submit" value="s">
+								<td><form:button name="submit" type="submit" value="submit">
 
 									</form:button></td>
-								<form:button name="clear" type="reset" value="r">
+								<form:button name="clear" type="reset" value="clear">
 
 								</form:button>
 								</td>

@@ -4,13 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker1" ).datepicker();
-  } );
-  </script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,17 +50,18 @@
 					action="${pageContext.request.contextPath}/admin/manageenrollment/create">
 					<table>
 						<tbody>
-							
+
 							<tr>
 
 								<td>Enrollment Date:</td>
-								<td><form:input size="16" path="enrDate" id="datepicker1" />
-									<form:errors path="enrDate" cssStyle="color: red;" /></td>
+								<td><form:input type="date" size="16" path="enrDate"
+										/> <form:errors path="enrDate"
+										cssStyle="color: red;" /></td>
 							</tr>
 							<tr>
 								<td>Enrollment Status:</td>
-								<td><form:input disabled="true" size="10" path="enrStatus" value="Pending"/>
-										</td>
+								<td><form:input disabled="true" size="10" path="enrStatus"
+										value="Pending" /></td>
 								<td><form:errors path="enrStatus" cssStyle="color: red;" /></td>
 							</tr>
 							<tr>
@@ -77,17 +72,18 @@
 							</tr>
 							<tr>
 								<td>Student ID:</td>
-								<td><form:select path="student.stuId" items="${sidlist}"
-										size="10" /></td>
+								<td><form:select path="student.stuId" size="10">
+										<form:options items="${sidlist}" />
+									</form:select></td>
 								<td><form:errors path="student.stuId"
 										cssStyle="color: red;" /></td>
 							</tr>
 
 							<tr>
-								<td><form:button name="submit" type="submit" value="s">
+								<td><form:button name="submit" type="submit" value="submit">
 
 									</form:button></td>
-								<form:button name="clear" type="reset" value="r">
+								<form:button name="clear" type="reset" value="clear">
 
 								</form:button>
 								</td>

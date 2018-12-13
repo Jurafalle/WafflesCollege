@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sg.iss.wafflescollege.exception.StudentNotFound;
 import sg.iss.wafflescollege.model.Enrollment;
 import sg.iss.wafflescollege.services.EnrollmentService;
+import sg.iss.wafflescollege.validator.EnrollmentValidator;
 
 @Controller
 @RequestMapping(value = "/admin/manageenrollment")
@@ -27,13 +28,13 @@ public class ManageEnrollmentController {
 
 	@Autowired
 	EnrollmentService eService;
-//    @Autowired
-//	private StudentValidator sValidator;
-//	
-//	@InitBinder("student")
-//	private void initDepartmentBinder(WebDataBinder binder) {
-//	binder.addValidators(sValidator);
-//	//}
+    @Autowired
+	private EnrollmentValidator eValidator;
+	
+	@InitBinder("enrollment")
+	private void initDepartmentBinder(WebDataBinder binder) {
+	binder.addValidators(eValidator);
+	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listAll() {
