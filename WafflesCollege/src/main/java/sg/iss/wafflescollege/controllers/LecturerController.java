@@ -59,20 +59,27 @@ public class LecturerController {
 
 	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/grading/{stgId}", method = RequestMethod.POST)
 	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId, 
-			@ModelAttribute Studentgrade studentgrade, final RedirectAttributes redirectAttributes) {
+			@ModelAttribute Studentgrade studentgrade) {
 		String newStgGrade=lService.convertToGrade(studentgrade.getStgGrade());
 		studentgrade.setStgGrade(newStgGrade);
-		studentgrade = lService.updateStudentgrade(studentgrade);
+		lService.updateStudentgrade(studentgrade);
 		ArrayList<Studentgrade> studentgrades=lService.findSpecificCourseStudentgrade(cseId);
-		ModelAndView mav = new ModelAndView("redirect:/lecturer/studentgradesofspecificcourse/{cseId}", "studentgrades", studentgrades);
+		ModelAndView mav = new ModelAndView("StudentGradePage", "studentgrades", studentgrades);
 		return mav;
 	}
 	
-	@RequestMapping(value = "/studentsofspecificcourse/{cseId}")
+	@RequestMapping(value = "/studentsofspecificcourse/{cseId}", method=RequestMethod.GET)
 	public ModelAndView studentPerformancePage(@PathVariable String cseId) {
 		ArrayList<Student> students=lService.findSpecificCourseStudents(cseId);
-		ModelAndView mav=new ModelAndView("ViewAStudentPerformance", "students", students);
+		ModelAndView mav=new ModelAndView("ViewStudentsPerformance", "students", students);
 		return mav;
 	}
 
+	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/grading/{stgId}", method = RequestMethod.GET)
+	public ModelAndView viewAStudentPerformancePage(@PathVariable String cseId, @PathVariable String stgId) {
+		int number = Integer.parseInt(stgId);
+		Studentgrade studentgrade = lService.findStudentgradeByStgId(number);
+		ModelAndView mav = new ModelAndView("ViewAStudentPerformance", "studentgrade", studentgrade);
+		return mav;
+	}
 }

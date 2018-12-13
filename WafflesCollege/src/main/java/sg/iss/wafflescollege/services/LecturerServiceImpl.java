@@ -80,9 +80,9 @@ public class LecturerServiceImpl implements LecturerService {
 
 	@Override
 	@Transactional
-	public Studentgrade updateStudentgrade(Studentgrade studentgrade) {
+	public int updateStudentgrade(Studentgrade studentgrade) {
 		sgrepo.saveAndFlush(studentgrade);
-		return studentgrade;
+		return 0;
 	}
 
 	@Override
