@@ -27,6 +27,7 @@ public class LecturerController {
 
 	@RequestMapping(value = "/courses")
 	public ModelAndView viewCoursePage() {
+
 		ArrayList<Course> courses = lService.findCourseTaught("L1004");
 		ModelAndView mav = new ModelAndView("ViewCoursesTaught", "courses", courses);
 		return mav;
@@ -62,9 +63,11 @@ public class LecturerController {
 		studentgrade = lService.updateStudentgrade(studentgrade);
 		ArrayList<Studentgrade> studentgrades=lService.findSpecificCourseStudentgrade(cseId);
 		ModelAndView mav = new ModelAndView("StudentGradePage", "studentgrades", studentgrades);
+
 		return mav;
 	}
 	
+
 	@RequestMapping(value = "/studentsofspecificcourse/{cseId}")
 	public ModelAndView studentPerformancePage(@PathVariable String cseId) {
 		ArrayList<Student> students=lService.findSpecificCourseStudents(cseId);

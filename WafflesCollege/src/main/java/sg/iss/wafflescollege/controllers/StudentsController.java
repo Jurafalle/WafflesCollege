@@ -1,6 +1,7 @@
 package sg.iss.wafflescollege.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -25,12 +26,34 @@ public class StudentsController {
 	StudentService sService;
 
 	@RequestMapping(value = "/gpa", method = RequestMethod.GET)
-	public ModelAndView viewGrades(HttpSession session, ) {
+	public ModelAndView viewGrades(HttpSession session) {
 		UserSession us = (UserSession) session.getAttribute("USERSESSION");
 
 		ModelAndView mav = new ModelAndView("StudentViewGrades");
-		Double cGPA = sService.CalculateCGPA();
+		Double cGPA = sService.CalculateCGPA("S1013"); /* Change to session.getID */
+		List<String[]> Display = sService.getStudentGrades("S1013"); /* Change to session.getID */
 		mav.addObject("cGPA", cGPA);
+		mav.addObject("Display", Display);
+		return mav;
+	}
+
+	@RequestMapping(value = "/viewenrolled", method = RequestMethod.GET)
+	public ModelAndView viewEnrolledCourses(HttpSession session) {
+		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+
+		ModelAndView mav = new ModelAndView("StudentViewEnrolledCourses");
+		List<String[]> Display = sService.getEnrolledCourses("S1013"); /* Change to session.getID */
+		mav.addObject("Display", Display);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/viewall", method = RequestMethod.GET)
+	public ModelAndView viewAllCourses(HttpSession session) {
+		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+
+		ModelAndView mav = new ModelAndView("StudentViewAllCourses");
+		List<String[]> Display = sService.getNewCourses("S1013"); /* Change to session.getID */
+		mav.addObject("Display", Display);
 		return mav;
 	}
 }

@@ -1,6 +1,7 @@
 package sg.iss.wafflescollege.services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sg.iss.wafflescollege.model.Course;
 import sg.iss.wafflescollege.model.Student;
@@ -11,9 +12,11 @@ public interface StudentService {
 	
 	Double convertGradeToGPA(String grade);
 
-	ArrayList<Course> getEnrolledCoursesList(String studentID, String status);
+	ArrayList<String> getEnrolledCourseIDs(String stuID);
 
-	ArrayList<Course> getNewCourses(Student s);
+	List<String[]> getNewCourses(String stuID);
+	
+	List<String[]> getStudentGrades(String stuID);
 
 	int enrollIntoCourse(Student s, String courseID);
 
@@ -30,4 +33,6 @@ public interface StudentService {
 	void removeStudent(Student s);
 
 	ArrayList<Student> findStudentsByCriteria(Student student);
+
+	List<String[]> getEnrolledCourses(String stuID);
 }

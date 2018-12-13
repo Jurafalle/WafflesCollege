@@ -33,15 +33,15 @@
 	<section>
 		<div class="col-container">
 			<nav>
-				<a href="${pageContext.request.contextPath}/student/viewenrolled" class="sidebar-button">View Enrolled Courses</a> 
-				<label style="font-weight: bold;">View Grades and GPA</label>
-				<a href="ViewAllCourses.jsp" class="sidebar-button">View All Courses</a>
-				<a href="EnrollNewCourse.jsp" class="sidebar-button">Enroll into a new Course</a> 
+				<label style="font-weight: bold;">View Enrolled Courses</label> 
+				<a href="${pageContext.request.contextPath}/student/gpa">View Grades and GPA</a>
+				<a href="ViewCourses.jsp" class="sidebar-button">View All Courses</a>
+				<a href="ManageCourses.jsp" class="sidebar-button">Enroll into a new Course</a> 
 				<a href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
 			</nav>
 
 			<article>
-				<h1>View Grades and GPA</h1>
+				<h1>View Enrolled Courses</h1>
 
 				<c:if test="${fn:length(Display) gt 0}">
 					<br />
@@ -55,8 +55,10 @@
 									code="label.student.cseDesc" /></th>
 							<th><s:message text="&nbspCredits&nbsp"
 									code="label.student.cseCredits" /></th>
-							<th><s:message text="&nbsp      Grade      &nbsp"
-									code="label.student.stgGrade" /></th>
+							<th><s:message text="&nbsp      Enrollment Status      &nbsp"
+									code="label.student.enrollmentstatus" /></th>
+									<th><s:message text="&nbsp      Lecturer      &nbsp"
+									code="label.student.LecturerName" /></th>
 						</tr>
 						<c:forEach var="Display" items="${Display}" varStatus="status">
 							<tr class="${status.index%2==0?'even':'odd'}">
@@ -65,13 +67,14 @@
 								<td style="text-align: center;" class="nowrap">${Display[1]}</td>
 								<td style="text-align: center;" class="nowrap">${Display[2]}</td>
 								<td style="text-align: center;" class="nowrap">${Display[3]}</td>
+								<td style="text-align: center;" class="nowrap">${Display[4]}</td>
 							</tr>
 						</c:forEach>
 					</table>
-					<div
+					<%-- <div
 						style="align-content: flex-end; display: inline-block; font-weight: bold;">
 						<br />Current GPA is ${cGPA}
-					</div>
+					</div> --%>
 				</c:if>
 
 			</article>

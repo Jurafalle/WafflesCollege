@@ -43,12 +43,15 @@ public class LecturerServiceImpl implements LecturerService {
 
 	@Override
 	@Transactional
+
 	public ArrayList<Course> findAllCourse() {
 		return (ArrayList<Course>) crepo.findAll();
+
 	}
 
 	@Override
 	@Transactional
+
 	public ArrayList<Enrollment> findSpecificCourseEnrollment(String cseId) {
 		return (ArrayList<Enrollment>) erepo.findEnrollmentByCseId(cseId);
 	}
@@ -93,5 +96,6 @@ public class LecturerServiceImpl implements LecturerService {
 			students.add(newstu);
 		}
 		return students;
+
 	}
 }
