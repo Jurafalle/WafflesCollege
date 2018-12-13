@@ -46,8 +46,8 @@
 
 			<article>
 				<h1>Students' Grade under Specific Course ${cseId}</h1>
-				<p>
-					<c:if test="${fn:length(enrollments) gt 0}">
+		
+					<c:if test="${fn:length(studentgrades) gt 0}">
 						<table style="cellspacing: 2; cellpadding: 2; border: 1;">
 
 							<tr class="listHeading">
@@ -63,19 +63,18 @@
 								<tr class="listRecord">
 									<td align="left">${studentgrade.stgId}</td>
 									<td align="left">${studentgrade.student.stuId}</td>
-									<td align="left">${studentgrade.student.stuFirstmidname + " " + studentgrade.student.stuLastname}</td>
+									<td align="left">${studentgrade.student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
 									<td align="left">${studentgrade.course.cseId}</td>
 									<td align="left">${studentgrade.course.cseDesc}</td>
 									<td align="left">${studentgrade.stgGrade}</td>
 									<td align="center"><a
-										href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${studentgrade.student.stuId}">View
-											Enrollments</a></td>
+										href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${studentgrade.student.stuId}">Grade This Student</a></td>
 								</tr>
 							</c:forEach>
 
 						</table>
 					</c:if>
-				</p>
+				
 
 			</article>
 		</div>

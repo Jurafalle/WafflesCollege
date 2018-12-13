@@ -44,6 +44,8 @@
 
 			<article>
 				<h1>Grade a Student under Course ${cseId}</h1>
+				<form:form method="POST" modelAttribute="studentgrade"
+					action="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/{cseId}">
 				<table>
 					<tbody>
 
@@ -69,14 +71,14 @@
 						<tr>
 							<td>Student Last Name: </td>
 							<td><form:input path="student.stuLastname" readonly="true"
-									value= "${studentgrade.student.stuFirstmidname}"
+									value= "${studentgrade.student.stuLastname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuLastname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course ID: </td>
 							<td><form:input path="course.cseId" readonly="true"
-									value= "${studentgrade.student.stuFirstmidname}"
+									value= "${studentgrade.course.cseId}"
 									size="10" /></td>
 							<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
 						</tr>
@@ -89,15 +91,15 @@
 						</tr>
 	                    <tr>
 							<td>Course Grade: </td>
-							<td><form:select path="stgGrade" items="${sidlist}"
+							<td><form:input path="stgGrade" value="Please input exam result from 0-100"
 									size="10" /></td>
 							<td><form:errors path="stgGrade" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
-							<td><form:button name="submit" type="submit" value="Submit">
+							<td><form:button name="submit" type="submit" value="Submit" size="10">
 
 								</form:button></td>
-							<form:button name="clear" type="reset" value="Reset">
+							<form:button name="clear" type="reset" value="Reset" size="10">
 
 							</form:button>
 							</td>
@@ -106,6 +108,7 @@
 						</tr>
 					</tbody>
 				</table>
+				</form:form>
 
 			</article>
 		</div>
