@@ -47,15 +47,15 @@
 			<article>
 				<h1>View Students' Performance under Course ${cseId}</h1>
 				<h2>Choose a student to view performance</h2>
-				<c:if test="${fn:length(studentgrades) gt 0}">
+				<c:if test="${fn:length(students) gt 0}">
 						<table style="cellspacing: 2; cellpadding: 2; border: 1;">
 
 							<tr class="listHeading">
 								<th>Student ID</th>
 								<th>Student Name</th>
-								<th>Student Name</th>
 								<th>Course ID</th>
-								<th>Course Name</th>
+								<th>Student Phone Number</th>
+								<th>Student Address</th>
 								<th>Grade</th>
 							</tr>
 
@@ -67,7 +67,7 @@
 									<td align="left">${student.stuPhoneNo}</td>
 									<td align="left">${student.stuAddress}</td>
 									<td align="center"><a
-										href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${studentgrade.stgId}">View Performance</a></td>
+										href="${pageContext.request.contextPath}/studentsofspecificcourse/${cseId}/viewperformance/${student.stuId}">View Performance</a></td>
 								</tr>
 							</c:forEach>
 

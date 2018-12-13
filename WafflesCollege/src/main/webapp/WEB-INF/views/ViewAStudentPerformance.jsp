@@ -46,42 +46,35 @@
 			</nav>
 
 			<article>
-				<h1>View Student ${stgId} Performance under Course ${cseId}</h1>
+				<h1>View Student ${stuId} Performance under Course ${cseId}</h1>
 				<h3>Choose a student to view performance</h3>
 				
 						<table>
 					<tbody>
-
-						<tr>
-
-							<td>Studentgrade ID: </td>
-							<td><form:input size="4" path="stgId" readonly="true" value= "${stgId}" />
-								<form:errors path="stgId" cssStyle="color: red;" /></td>
-						</tr>
 						<tr>
 							<td>Student ID: </td>
 							<td><form:input size="5" path="student.stuId" readonly="true"
-									value= "${studentgrade.student.stuId}" /></td>
+									value= "${stuId}" /></td>
 							<td><form:errors path="student.stuId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student First Name: </td>
 							<td><form:input path="student.stuFirstmidname" readonly="true"
-									value= "${studentgrade.student.stuFirstmidname}"
+									value= "${student.stuFirstmidname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuFirstmidname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student Last Name: </td>
 							<td><form:input path="student.stuLastname" readonly="true"
-									value= "${studentgrade.student.stuLastname}"
+									value= "${student.stuLastname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuLastname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course ID: </td>
 							<td><form:input path="course.cseId" readonly="true"
-									value= "${studentgrade.course.cseId}"
+									value= "${cseId}"
 									size="10" /></td>
 							<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
 						</tr>

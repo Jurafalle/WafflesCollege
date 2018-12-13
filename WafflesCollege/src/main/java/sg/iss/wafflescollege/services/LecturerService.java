@@ -28,6 +28,8 @@ public interface LecturerService {
 	
 	String convertToGrade(String score);
 	
+	Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId);
+	
 	
 	
 	
