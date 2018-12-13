@@ -12,7 +12,6 @@ import sg.iss.wafflescollege.model.Enrollment;
 public class EnrollmentValidator implements Validator {
 
 	public EnrollmentValidator() {
-		
 	}
 
 	@Override

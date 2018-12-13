@@ -26,9 +26,9 @@ import sg.iss.wafflescollege.validator.EnrollmentValidator;
 
 public class ManageEnrollmentController {
 
-	@Autowired
+	@Autowired 
 	EnrollmentService eService;
-   @Autowired
+    @Autowired
 	private EnrollmentValidator eValidator;
 	
 	@InitBinder("enrollment")
