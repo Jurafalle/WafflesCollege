@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.iss.cats.model.User;
+
 import sg.iss.wafflescollege.exception.StudentNotFound;
 import sg.iss.wafflescollege.model.Enrollment;
 import sg.iss.wafflescollege.services.EnrollmentService;

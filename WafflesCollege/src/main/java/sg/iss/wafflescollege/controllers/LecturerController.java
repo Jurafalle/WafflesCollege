@@ -27,7 +27,7 @@ public class LecturerController {
 
 	@RequestMapping(value = "/courses")
 	public ModelAndView viewCoursePage() {
-		ArrayList<Course> courses = lService.findCourseTaught(lecId);
+		ArrayList<Course> courses = lService.findCourseTaught("L1004");
 		ModelAndView mav = new ModelAndView("ViewCoursesTaught", "courses", courses);
 		return mav;
 	}
