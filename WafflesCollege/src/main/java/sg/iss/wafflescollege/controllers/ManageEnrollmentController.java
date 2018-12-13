@@ -16,26 +16,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import edu.iss.cats.model.User;
 import sg.iss.wafflescollege.exception.StudentNotFound;
 import sg.iss.wafflescollege.model.Enrollment;
 import sg.iss.wafflescollege.services.EnrollmentService;
 
-
 @Controller
-@RequestMapping(value = "/admin/manageenrolment")
+@RequestMapping(value = "/admin/manageenrollment")
 
 public class ManageEnrollmentController {
-	
-	@Autowired 
+
+	@Autowired
 	EnrollmentService eService;
-	//@Autowired
-	//private StudentValidator sValidator;
-	
-	//@InitBinder("student")
-	//private void initDepartmentBinder(WebDataBinder binder) {
-	//	binder.addValidators(sValidator);
-	//}
+//    @Autowired
+//	private StudentValidator sValidator;
+//	
+//	@InitBinder("student")
+//	private void initDepartmentBinder(WebDataBinder binder) {
+//	binder.addValidators(sValidator);
+//	//}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listAll() {
@@ -46,20 +45,32 @@ public class ManageEnrollmentController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView newStudentPage() {
+	public ModelAndView createNewEnrollment() {
 		ModelAndView mav = new ModelAndView("EnrollmentFormNew", "enrollment", new Enrollment());
+		ArrayList<String> statuslist = eService.findAllStatus();
+		ArrayList<String> cidlist = eService.findAllCID();
+		ArrayList<String> sidlist = eService.findAllSID();
+		mav.addObject("statuslist", statuslist );
+		mav.addObject("sidlist", sidlist );
+		mav.addObject("cidlist", cidlist );
 		return mav;
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ModelAndView newUserPage(@ModelAttribute Enrollment enrollment) {
+
+	public ModelAndView createNewEnrollment(@ModelAttribute @Valid Enrollment enrollment, BindingResult result,
+			final RedirectAttributes redirectAttributes) {
+
+		if (result.hasErrors())
+			return new ModelAndView("EnrollmentFormNew");
+
+		ModelAndView mav = new ModelAndView();
+
 		eService.createEnrollment(enrollment);
-		ArrayList<Enrollment> elist = eService.findAllEnrollments();
-		ModelAndView mav = new ModelAndView("ManageEnrolment");
-		
-		mav.addObject("enrollment", elist);
+		mav.setViewName("redirect:/admin/manageenrollment/list");
+
 		return mav;
-		
+
 	}
 
 	@RequestMapping(value = "/edit/{enrollmentId}", method = RequestMethod.GET)
