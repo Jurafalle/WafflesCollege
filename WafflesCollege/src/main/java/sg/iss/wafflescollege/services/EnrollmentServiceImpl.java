@@ -76,6 +76,33 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 
+
+	@Override
+	@Transactional
+	public ArrayList<String> findAllStatus() {
+		// TODO Auto-generated method stub
+		return enrollmentRepo.findAllStatus();
+	}
+
+
+
+	@Override
+	@Transactional
+	public ArrayList<String> findAllSID() {
+		// TODO Auto-generated method stub
+		return enrollmentRepo.findAllStudent();
+	}
+
+
+
+	@Override
+	@Transactional
+	public ArrayList<String> findAllCID() {
+		// TODO Auto-generated method stub
+		return enrollmentRepo.findAllCourse();
+	}
+
+
 	}
 
 

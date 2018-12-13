@@ -15,6 +15,11 @@ public interface EnrollmentService {
 	Enrollment updateEnrollment(Enrollment enrollment);
 	Enrollment createEnrollment(Enrollment enrollment);
 	Enrollment rejectEnrollment(Enrollment enrollment);
+	
+	ArrayList<String> findAllStatus();
+	ArrayList<String> findAllSID();
+	ArrayList<String> findAllCID();
+	
 
 
 
