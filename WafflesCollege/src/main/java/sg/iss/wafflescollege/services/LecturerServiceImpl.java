@@ -87,12 +87,12 @@ public class LecturerServiceImpl implements LecturerService {
 
 	@Override
 	@Transactional
-	public ArrayList<Student> findSpecificCourseStudents(String cseId) {
+	public ArrayList<Student> findActiveSpecificCourseStudents(String cseId) {
 		ArrayList<Enrollment> enrollments = erepo.findEnrollmentByCseId(cseId);
 		ArrayList<Student> students = new ArrayList<Student>();
 		for (Enrollment enrollment : enrollments) {
 			String stuId = enrollment.getStudent().getStuId();
-			Student newstu = srepo.findStudentByStuId(stuId);
+			Student newstu = srepo.findActiveStudentByStuId(stuId);
 			students.add(newstu);
 		}
 		return students;

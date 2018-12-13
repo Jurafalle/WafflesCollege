@@ -70,7 +70,7 @@ public class LecturerController {
 	
 	@RequestMapping(value = "/studentsofspecificcourse/{cseId}", method=RequestMethod.GET)
 	public ModelAndView studentPerformancePage(@PathVariable String cseId) {
-		ArrayList<Student> students=lService.findSpecificCourseStudents(cseId);
+		ArrayList<Student> students=lService.findActiveSpecificCourseStudents(cseId);
 		ModelAndView mav=new ModelAndView("ViewStudentsPerformance", "students", students);
 		return mav;
 	}

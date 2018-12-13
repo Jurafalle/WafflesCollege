@@ -22,7 +22,7 @@ public interface LecturerService {
 	
 	int updateStudentgrade(Studentgrade studentgrade);
 	
-	ArrayList<Student> findSpecificCourseStudents(String cseId);
+	ArrayList<Student> findActiveSpecificCourseStudents(String cseId);
 	
 	Studentgrade findStudentgradeByStgId(int stgId);
 	
