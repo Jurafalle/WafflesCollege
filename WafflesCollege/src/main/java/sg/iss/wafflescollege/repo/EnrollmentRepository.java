@@ -19,16 +19,16 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer>
 	@Query("select e from Enrollment e where e.enrId = :eid")
 	ArrayList<Enrollment> findEnrollmentById(@Param("eid") String eid);
 
-	@Query("select e from Enrollment e where e.cseId = :cseId AND e.enrStatus = 'Approved'")
+	@Query("select e from Enrollment e where e.course.cseId = :cseId AND e.enrStatus = 'Approved'")
 	ArrayList<Enrollment> findApprovedEnrollmentByCseId(@Param("cseId") String cseId);
 
-	@Query("select e from Enrollment e where e.cseId = :cseId AND e.enrStatus = 'Completed'")
+	@Query("select e from Enrollment e where e.course.cseId = :cseId AND e.enrStatus = 'Completed'")
 	ArrayList<Enrollment> findCompletedEnrollmentByCseId(@Param("cseId") String cseId);
 	
 	@Query("select distinct e.enrStatus from Enrollment e")
 	ArrayList<String> findAllStatus();
 	
-	@Query("select distinct e.course.cseid from Enrollment e")
+	@Query("select distinct e.course.cseId from Enrollment e")
 	ArrayList<String> findAllCourse();
 	
 	@Query("select distinct e.student.stuId from Enrollment e")
