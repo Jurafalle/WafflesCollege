@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,18 +54,25 @@ public class LecturerController {
 	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId) {
 		int number = Integer.parseInt(stgId);
 		Studentgrade studentgrade = lService.findStudentgradeByStgId(number);
+		Studentgrade studentgrade2 = lService.findStudentgradeByStgId(number);
 		ModelAndView mav = new ModelAndView("GradeACourse", "studentgrade", studentgrade);
+		mav.addObject(studentgrade2);
 		return mav;
 	}
 
 	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/grading/{stgId}", method = RequestMethod.POST)
 	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId,
-			@ModelAttribute Studentgrade studentgrade) {
-		String newStgGrade = lService.convertToGrade(studentgrade.getStgGrade());
-		studentgrade.setStgGrade(newStgGrade);
-		lService.updateStudentgrade(studentgrade);
+			@ModelAttribute Studentgrade studentgrade, @ModelAttribute Studentgrade studentgrade2,
+			BindingResult result) {
+		if (result.hasErrors())
+			return new ModelAndView("StudentGradePage");
+		
+//		String newStgGrade = lService.convertToGrade(studentgrade.getStgGrade());
+//		studentgrade.setStgGrade(newStgGrade);
+//		lService.updateStudentgrade(studentgrade);
 		ArrayList<Studentgrade> studentgrades = lService.findSpecificCourseStudentgrade(cseId);
 		ModelAndView mav = new ModelAndView("StudentGradePage", "studentgrades", studentgrades);
+		lService.updateStudentGrade(studentgrade, studentgrade2);
 		return mav;
 	}
 
@@ -82,7 +90,6 @@ public class LecturerController {
 		ArrayList<Studentgrade> sglist = lService.findStudentgradeByStuIdCseId(stuId, cseId);
 		Studentgrade studentgrade = sglist.get(0);
 		ModelAndView mav = new ModelAndView("ViewAStudentPerformance", "studentgrade", studentgrade);
-
 		return mav;
 	}
 }

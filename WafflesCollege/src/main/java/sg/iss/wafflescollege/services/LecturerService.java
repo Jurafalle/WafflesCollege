@@ -20,7 +20,7 @@ public interface LecturerService {
 	
 	ArrayList<Studentgrade> findSpecificCourseStudentgrade(String cseId);
 	
-	int updateStudentgrade(Studentgrade studentgrade);
+	Studentgrade updateStudentgrade(Studentgrade studentgrade);
 	
 	ArrayList<Student> findActiveSpecificCourseStudents(String cseId);
 	
@@ -32,6 +32,7 @@ public interface LecturerService {
 	
 	Student findStudentByStuId(String stuId); 
 	
+	Studentgrade updateStudentGrade(Studentgrade studentgrade, Studentgrade studentgrade2);
 	
 	
 	

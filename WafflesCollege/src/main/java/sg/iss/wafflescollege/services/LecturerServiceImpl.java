@@ -80,9 +80,8 @@ public class LecturerServiceImpl implements LecturerService {
 
 	@Override
 	@Transactional
-	public int updateStudentgrade(Studentgrade studentgrade) {
-		sgrepo.saveAndFlush(studentgrade);
-		return 0;
+	public Studentgrade updateStudentgrade(Studentgrade studentgrade) {
+		return sgrepo.saveAndFlush(studentgrade);
 	}
 
 	@Override
@@ -156,5 +155,54 @@ public class LecturerServiceImpl implements LecturerService {
 	@Transactional
 	public Student findStudentByStuId(String stuId) {
 		return srepo.findStudentByStuId(stuId); 
+	}
+	
+	@Override
+	@Transactional
+	public Studentgrade updateStudentGrade(Studentgrade studentgrade, Studentgrade studentgrade2) {
+		String score = studentgrade.getStgGrade();
+		int number = Integer.parseInt(score);
+		String grade = "";
+		if (number >= 0 && number < 40) {
+			grade = "F";
+		}
+		if (number >= 40 && number < 45) {
+			grade = "D";
+		}
+		if (number >= 45 && number < 50) {
+			grade = "D+";
+		}
+		if (number >= 50 && number < 55) {
+			grade = "C";
+		}
+		if (number >= 55 && number < 60) {
+			grade = "C+";
+		}
+		if (number > 60 && number < 65) {
+			grade = "B-";
+		}
+		if (number >= 65 && number < 70) {
+			grade = "B";
+		}
+		if (number >= 70 && number < 75) {
+			grade = "B+";
+		}
+		if (number >= 75 && number < 80) {
+			grade = "A-";
+		}
+		if (number >= 80 && number < 85) {
+			grade = "A";
+		}
+		if (number >= 85 && number < 100) {
+			grade = "A+";
+		}
+		int id=studentgrade2.getStgId();
+		Student student=studentgrade2.getStudent();
+		Course course=studentgrade2.getCourse();
+		studentgrade.setStgId(id);
+		studentgrade.setStudent(student);
+		studentgrade.setCourse(course);
+		studentgrade.setStgGrade(grade);
+		return sgrepo.saveAndFlush(studentgrade);	
 	}
 }

@@ -44,7 +44,7 @@
 
 			<article>
 				<h1>Grade a Student under Course ${cseId}</h1>
-				<form:form method="GET" modelAttribute="studentgrade"
+				<form:form method="POST" modelAttribute="studentgrade"
 					action="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${stgId}">
 					<table>
 						<tbody>
