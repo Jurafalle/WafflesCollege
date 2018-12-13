@@ -35,40 +35,35 @@
   
   <article>
     <h1>Manage Enrollment</h1>
-    <p>
-    <a href="${pageContext.request.contextPath}/admin/manageenrolment/create">Add
+    
+    <a href="${pageContext.request.contextPath}/admin/manageenrollment/create">Add
 	Student</a>
-<c:if test="${fn:length(students) gt 0}">
-	<br />
-	<br />
-	<table class="borderAll">
-		<tr>
-			<th><s:message code="label.student.index" /></th>
-			<th><s:message code="label.student.name" /></th>
-			<th><s:message code="label.student.nickName" /></th>
-			<th><s:message code="label.student.nric" /></th>
-			<th><s:message code="label.student.mark" /></th>
 
-		</tr>
-		<c:forEach var="enrollment" items="${enrollments}" varStatus="status">
-			<tr class="${status.index%2==0?'even':'odd'}">
-				<td class="nowrap">${status.index}</td>
-				<td class="nowrap">${enrollment.enrStatus}</td>
-				<td class="nowrap">${enrollment.course.cseDesc}</td>
-				<td class="nowrap">${enrollment.student.stuLastname}</td>
-				<td class="nowrap"><fmt:formatDate value="${student.enrDate}" pattern="MM.dd.yyyy" /></td>
-
-				<td align="center"><a
-					href="${pageContext.request.contextPath}/admin/manageenrolment/edit/${enrollment.enrId}">
-						<s:message code="label.student.edit" />
-				</a></td>
-				
-
+   <c:if test="${fn:length(students) gt 0}">
+	<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+		<thead>
+			<tr class="listHeading">
+				<th>Enrollment ID</th>
+				<th>Enrollment Date</th>
+				<th>Enrollment Status</th>
+				<th>Course </th>
+				<th>Student</th>
 			</tr>
-		</c:forEach>
+		</thead>
+		<tbody>
+			<c:forEach var="enrollment" items="${enrollments}">
+				<tr class="listRecord">
+					<td>${enrollment.enrId}</td>
+					<td>${enrollment.enrDate}</td>
+					<td>${enrollment.enrStatus}</td>
+					<td>${enrollment.course.cseDesc}</td>
+					<td>${enrollment.student.stuFirstmidname+enrollment.student.stuLastname}</td>
+					
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 </c:if>
-    </p>
 
    </article>
    </div>
