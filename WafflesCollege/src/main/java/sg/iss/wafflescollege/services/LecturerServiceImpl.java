@@ -155,6 +155,6 @@ public class LecturerServiceImpl implements LecturerService {
 	@Override
 	@Transactional
 	public Student findStudentByStuId(String stuId) {
-		return srepo.findStudentByStuId(stuId);
+		return srepo.findStudentByStuId(stuId); 
 	}
 }

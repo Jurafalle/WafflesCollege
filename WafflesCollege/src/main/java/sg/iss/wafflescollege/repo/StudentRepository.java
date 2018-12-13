@@ -27,7 +27,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 	ArrayList<String> getEnrolledCurrentCourseIDs(@Param("stuID") String stuID);
 
 	@Query("SELECT DISTINCT c.cseId FROM Course c, Enrollment e WHERE c.cseId = e.course.cseId AND e.enrStatus != 'Not Approved' AND e.student.stuId = :stuID")
-	ArrayList<String> getNewCourseIDs(@Param("stuID") String stuID);
+	ArrayList<String> getNewCourseIDs(@Param("stuID") String stuID); 
 
 	@Query("SELECT e FROM Enrollment e WHERE e.enrStatus != 'Not Approved' AND e.student.stuId = :stuID")
 	ArrayList<Enrollment> getEnrolledCoursesList(@Param("stuID") String stuID);

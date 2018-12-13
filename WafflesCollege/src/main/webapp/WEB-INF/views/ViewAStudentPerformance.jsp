@@ -19,7 +19,7 @@
 <link href="../../css/sidebar.css" rel="stylesheet" type="text/css"
 	media="all" />
 <title>Waffles College Lecturer Portal</title>
-</head>
+</head> 
 <body>
 
 

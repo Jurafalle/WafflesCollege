@@ -70,7 +70,7 @@
 										path="student.stuFirstmidname" readonly="true"
 										value="${studentgrade.student.stuFirstmidname}" size="10" /></td>
 								<td><form:errors path="student.stuFirstmidname"
-										cssStyle="color: red;" /></td>
+										cssStyle="color: red;" /></td> 
 							</tr>
 							<tr>
 								<td>Student Last Name:</td>

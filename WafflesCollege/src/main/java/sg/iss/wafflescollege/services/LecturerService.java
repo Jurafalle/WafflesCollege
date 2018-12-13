@@ -30,7 +30,7 @@ public interface LecturerService {
 	
 	ArrayList<Studentgrade> findStudentgradeByStuIdCseId(String stuId, String cseId);
 	
-	Student findStudentByStuId(String stuId);
+	Student findStudentByStuId(String stuId); 
 	
 	
 	

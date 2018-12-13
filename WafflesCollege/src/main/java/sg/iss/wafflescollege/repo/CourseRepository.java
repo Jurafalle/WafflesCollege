@@ -14,7 +14,7 @@ public interface CourseRepository extends JpaRepository<Course, String> {
 	ArrayList<Course> findCourseByLecId(@Param("lecId") String lecId);
 	
 	@Query("SELECT c FROM Course c where c.cseId = :cseId")
-	Course findCourseByCseId(@Param("cseId") String cseId);
+	Course findCourseByCseId(@Param("cseId") String cseId); 
 	
 	
 }
