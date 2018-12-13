@@ -1,8 +1,18 @@
 package sg.iss.wafflescollege.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
  
 /**
@@ -21,6 +31,7 @@ public class Enrollment implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="ENR_DATE")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date enrDate;
 
 	@Column(name="ENR_STATUS")

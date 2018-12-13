@@ -28,13 +28,13 @@ public class ManageEnrollmentController {
 
 	@Autowired
 	EnrollmentService eService;
-    @Autowired
-	private EnrollmentValidator eValidator;
-	
-	@InitBinder("enrollment")
-	private void initDepartmentBinder(WebDataBinder binder) {
-	binder.addValidators(eValidator);
-	}
+//    @Autowired
+//	private EnrollmentValidator eValidator;
+//	
+//	@InitBinder("enrollment")
+//	private void initDepartmentBinder(WebDataBinder binder) {
+//	binder.addValidators(eValidator);
+//	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listAll() {
