@@ -62,11 +62,7 @@
 					action="${pageContext.request.contextPath}/admin/manageenrollment/create">
 					<table>
 						<tbody>
-							<tr>
-								<td>Enrollment ID:</td>
-								<td><form:input path="enrId" size="10" /></td>
-								<td><form:errors path="enrId" cssStyle="color: red;" /></td>
-							</tr>
+							
 							<tr>
 
 								<td>Enrollment Date:</td>
@@ -75,7 +71,7 @@
 							</tr>
 							<tr>
 								<td>Enrollment Status:</td>
-								<td><form:input disabled="true" size="10" path="status" />
+								<td><form:input disabled="true" size="10" path="enrStatus" value="Pending"/>
 										</td>
 								<td><form:errors path="enrStatus" cssStyle="color: red;" /></td>
 							</tr>

@@ -60,7 +60,7 @@
    			 <td>${enrollment.enrStatus}</td>
    			 <td><c:url
    							 value="/admin/manageenrollment/edit/${enrollment.enrId}" var="d" />
-   						 <a href="${d}"><spring:message code="caption.update" /></a></td>
+   						 <a href="${d}"><spring:message code="Update" /></a></td>
     
    		 </tr>
    	 </c:forEach>

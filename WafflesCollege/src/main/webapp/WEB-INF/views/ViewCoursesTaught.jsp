@@ -32,19 +32,20 @@
 	<section>
 		<div class="col-container">
 			<nav>
-				<a href="ViewCoursesTaught.jsp" class="sidebar-button"><b>View
-						Courses Taught</b></a> <a href="ViewCourseEnrolment.jsp"
-					class="sidebar-button">View Course Enrolment</a> <a
-					href="GradeACourse.jsp" class="sidebar-button">Grade a Course</a> <a
-					href="ViewAStudentPerformance.jsp" class="sidebar-button">View
-					a Student Performance</a> <a href="../main/MainPage.jsp"
-					class="sidebar-button">Log Out</a>
+				<a href="ViewCoursesTaught.jsp" class="sidebar-button"><b>ViewCourses
+						Taught</b></a> <a href="ViewCourseEnrolment.jsp" class="sidebar-button">View
+					Course Enrolment</a> <a href="GradeACourse.jsp" class="sidebar-button">Grade
+					a Course</a> <a href="ViewAStudentPerformance.jsp"
+					class="sidebar-button">View a Student Performance</a> <a
+					href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
 			</nav>
 
 			<article>
 				<h1>View Courses Taught</h1>
 				<c:if test="${fn:length(courses) gt 0}">
-					<table style="cellspacing: 2; cellpadding: 2; border: 1;">
+					<br />
+					<br />
+					<table class= borderAll style="cellspacing: 2; cellpadding: 2; border: 1;">
 
 						<tr class="listHeading">
 							<th>Course ID</th>
