@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import sg.iss.wafflescollege.exception.StudentNotFound;
 import sg.iss.wafflescollege.model.Enrollment;
 import sg.iss.wafflescollege.services.EnrollmentService;
@@ -50,9 +49,9 @@ public class ManageEnrollmentController {
 		ArrayList<String> statuslist = eService.findAllStatus();
 		ArrayList<String> cidlist = eService.findAllCID();
 		ArrayList<String> sidlist = eService.findAllSID();
-		mav.addObject("statuslist", statuslist );
-		mav.addObject("sidlist", sidlist );
-		mav.addObject("cidlist", cidlist );
+		mav.addObject("statuslist", statuslist);
+		mav.addObject("sidlist", sidlist);
+		mav.addObject("cidlist", cidlist);
 		return mav;
 	}
 
@@ -77,15 +76,27 @@ public class ManageEnrollmentController {
 	public ModelAndView editStudentPage(@PathVariable Integer enrollmentId) {
 		ModelAndView mav = new ModelAndView("EnrollmentFormEdit");
 		mav.addObject("enrollment", eService.findEnrollmentById(enrollmentId));
+		ArrayList<String> statuslist = eService.findAllStatus();
+		ArrayList<String> cidlist = eService.findAllCID();
+		ArrayList<String> sidlist = eService.findAllSID();
+		mav.addObject("statuslist", statuslist);
+		mav.addObject("sidlist", sidlist);
+		mav.addObject("cidlist", cidlist);
 		return mav;
+
 	}
 
 	@RequestMapping(value = "/edit/{enrollmentId}", method = RequestMethod.POST)
-	public ModelAndView editUserPage(@PathVariable Integer enrollmentId, @ModelAttribute Enrollment enrollment) {
+
+	public ModelAndView editUser(@ModelAttribute @Valid Enrollment enrollment, BindingResult result,
+			@PathVariable Integer enrollmentId, final RedirectAttributes redirectAttributes) {
+
+		if (result.hasErrors())
+			return new ModelAndView("EnrollmentFormEdit");
+
+		ModelAndView mav = new ModelAndView("redirect:/admin/manageenrollment/list");
 		eService.updateEnrollment(enrollment);
-		ArrayList<Enrollment> elist = eService.findAllEnrollments();
-		ModelAndView mav = new ModelAndView("ManageEnrolment");
-		mav.addObject("enrollment", elist);
+
 		return mav;
 	}
 
