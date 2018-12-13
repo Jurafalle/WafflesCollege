@@ -63,7 +63,7 @@
 							<c:forEach var="student" items="${students}">
 								<tr class="listRecord">
 									<td align="center">${student.stuId}</td>
-									<td align="center">${student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
+									<td align="center">${student.stuFirstmidname} ${student.stuLastname}</td>
 									<td align="center">${cseId}</td>
 									<td align="center">${course.cseDesc}</td>
 									<td align="center">${student.stuEmail}</td>

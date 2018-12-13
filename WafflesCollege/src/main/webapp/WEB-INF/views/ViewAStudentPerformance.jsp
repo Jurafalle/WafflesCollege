@@ -33,105 +33,80 @@
 	<section>
 		<div class="col-container">
 			<nav>
-				<a href="${pageContext.request.contextPath}/lecturer/courses"
-					class="sidebar-button">View Courses Taught</a> <a
-					href="${pageContext.request.contextPath}/lecturer/courses"
-					class="sidebar-button"><b>View Course Enrollment</b></a> <a
-					href="${pageContext.request.contextPath}/lecturer/courses"
-					class="sidebar-button">Grade a Course</a> <a
-					href="${pageContext.request.contextPath}/lecturer/courses"
+				<a href="ViewCoursesTaught.jsp" class="sidebar-button">View
+					Courses Taught</a> <a href="ViewCourseeErolment.jsp"
+					class="sidebar-button">View Course Enrollment</a> <a
+					href="GradeACourse.jsp" class="sidebar-button"><b>Grade a
+						Course</b></a> <a href="ViewAStudentPerformance.jsp"
 					class="sidebar-button">View a Student Performance</a> <a
-					href="${pageContext.request.contextPath}/lecturer/courses"
-					class="sidebar-button">Log Out</a>
+					href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
 			</nav>
 
 			<article>
 				<h1>View Student ${stuId} Performance under Course ${cseId}</h1>
-				<h3>Choose a student to view performance</h3>
-				
-						<table>
+				<form:form method="POST" modelAttribute="studentgrade"
+					action="${pageContext.request.contextPath}/lecturer/studentsofspecificcourse/${cseId}/viewperformance/{stuId}">
+				<table>
 					<tbody>
-					    <tr>
+
+						<tr>
 
 							<td>Studentgrade ID: </td>
-							<td><form:input size="4" path="stgId" readonly="true" value= "${stgId}" />
+							<td><form:input disabled="true" size="4" path="stgId" readonly="true"/>
 								<form:errors path="stgId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student ID: </td>
-							<td><form:input size="5" path="student.stuId" readonly="true"
-									value= "${stuId}" /></td>
+							<td><form:input disabled="true" size="5" path="student.stuId" readonly="true"
+									value= "${studentgrade.student.stuId}" /></td>
 							<td><form:errors path="student.stuId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student First Name: </td>
-							<td><form:input path="student.stuFirstmidname" readonly="true"
+							<td><form:input disabled="true" path="student.stuFirstmidname" readonly="true"
 									value= "${studentgrade.student.stuFirstmidname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuFirstmidname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student Last Name: </td>
-							<td><form:input path="student.stuLastname" readonly="true"
+							<td><form:input disabled="true" path="student.stuLastname" readonly="true"
 									value= "${studentgrade.student.stuLastname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuLastname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
-							<td>Student Email: </td>
-							<td><form:input path="student.stuEmail" readonly="true"
-									value= "${studentgrade.student.stuEmail}"
-									size="10" /></td>
-							<td><form:errors path="student.stuEmail" cssStyle="color: red;" /></td>
-						</tr>
-						<tr>
-							<td>Student Phone Number: </td>
-							<td><form:input path="student.stuPhoneNo" readonly="true"
-									value= "${studentgrade.student.stuPhoneNo}"
-									size="10" /></td>
-							<td><form:errors path="student.stuPhoneNo" cssStyle="color: red;" /></td>
-						</tr>
-						<tr>
-							<td>Student Address: </td>
-							<td><form:input path="student.stuAddress" readonly="true"
-									value= "${studentgrade.student.stuAddress}"
-									size="10" /></td>
-							<td><form:errors path="student.stuAddress" cssStyle="color: red;" /></td>
-						</tr>
-						<tr>
 							<td>Course ID: </td>
-							<td><form:input path="course.cseId" readonly="true"
+							<td><form:input disabled="true" path="course.cseId" readonly="true"
 									value= "${studentgrade.course.cseId}"
 									size="10" /></td>
 							<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course Name: </td>
-							<td><form:input path="course.cseDesc" readonly="true"
-									value="${studentgrade.course.cseDesc}"
+							<td><form:input disabled="true" path="course.cseDesc" readonly="true"
+									value= "${studentgrade.course.cseDesc}"
 									size="40" /></td>
 							<td><form:errors path="course.cseDesc" cssStyle="color: red;" /></td>
 						</tr>
 	                    <tr>
 							<td>Course Grade: </td>
-							<td><form:input path="stgGrade"	size="40" readonly="true" value="${studentgrade.stgGrade}"/></td>
+							<td><form:input path="stgGrade" value="${studentgrade.stgGrade}" readonly="true"
+									size="40" /></td>
 							<td><form:errors path="stgGrade" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
-							<td><form:button name="submit" type="submit" value="Submit" size="1000">
+							
+								<td><form:button name="clear" type="reset" value="Reset"
+										size="1000">
 
-								</form:button></td>
-							<td>
-							<form:button name="clear" type="reset" value="Reset" size="1000">
-
-							</form:button>
-							</td>
+									</form:button></td>
 							<td></td>
 							<td></td>
 						</tr>
 					</tbody>
 				</table>
-					
+				</form:form>
 
 			</article>
 		</div>

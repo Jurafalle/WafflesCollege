@@ -148,7 +148,7 @@ public class LecturerServiceImpl implements LecturerService {
 	
 	@Override
 	@Transactional
-	public Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId) {
+	public ArrayList<Studentgrade> findStudentgradeByStuIdCseId(String stuId, String cseId) {
 		return sgrepo.findStudentgradeByStuIdCseId(stuId, cseId);
 	}
 	

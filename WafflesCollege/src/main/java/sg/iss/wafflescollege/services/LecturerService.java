@@ -28,7 +28,7 @@ public interface LecturerService {
 	
 	String convertToGrade(String score);
 	
-	Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId);
+	ArrayList<Studentgrade> findStudentgradeByStuIdCseId(String stuId, String cseId);
 	
 	Student findStudentByStuId(String stuId);
 	
