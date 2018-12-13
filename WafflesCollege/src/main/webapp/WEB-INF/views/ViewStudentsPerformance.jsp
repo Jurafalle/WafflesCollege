@@ -51,22 +51,21 @@
 						<table style="cellspacing: 2; cellpadding: 2; border: 1;">
 
 							<tr class="listHeading">
-								<th>Studentgrade ID</th>
 								<th>Student ID</th>
+								<th>Student Name</th>
 								<th>Student Name</th>
 								<th>Course ID</th>
 								<th>Course Name</th>
 								<th>Grade</th>
 							</tr>
 
-							<c:forEach var="studentgrade" items="${studentgrades}">
+							<c:forEach var="student" items="${students}">
 								<tr class="listRecord">
-									<td align="left">${studentgrade.stgId}</td>
-									<td align="left">${studentgrade.student.stuId}</td>
-									<td align="left">${studentgrade.student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
-									<td align="left">${studentgrade.course.cseId}</td>
-									<td align="left">${studentgrade.course.cseDesc}</td>
-									<td align="left">${studentgrade.stgGrade}</td>
+									<td align="left">${student.stuId}</td>
+									<td align="left">${student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
+									<td align="left">${cseId}</td>
+									<td align="left">${student.stuPhoneNo}</td>
+									<td align="left">${student.stuAddress}</td>
 									<td align="center"><a
 										href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${studentgrade.stgId}">View Performance</a></td>
 								</tr>

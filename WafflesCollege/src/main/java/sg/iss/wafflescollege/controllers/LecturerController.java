@@ -75,7 +75,7 @@ public class LecturerController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/grading/{stgId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/viewperformance/{stuId}", method = RequestMethod.GET)
 	public ModelAndView viewAStudentPerformancePage(@PathVariable String cseId, @PathVariable String stgId) {
 		int number = Integer.parseInt(stgId);
 		Studentgrade studentgrade = lService.findStudentgradeByStgId(number);
