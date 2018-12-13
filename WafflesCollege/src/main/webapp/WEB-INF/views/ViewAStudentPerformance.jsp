@@ -60,16 +60,37 @@
 						<tr>
 							<td>Student First Name: </td>
 							<td><form:input path="student.stuFirstmidname" readonly="true"
-									value= "${student.stuFirstmidname}"
+									value= "${studentgrade.student.stuFirstmidname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuFirstmidname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student Last Name: </td>
 							<td><form:input path="student.stuLastname" readonly="true"
-									value= "${student.stuLastname}"
+									value= "${studentgrade.student.stuLastname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuLastname" cssStyle="color: red;" /></td>
+						</tr>
+						<tr>
+							<td>Student Email: </td>
+							<td><form:input path="stuEmail" readonly="true"
+									value= "${student.stuEmail}"
+									size="10" /></td>
+							<td><form:errors path="stuEmail" cssStyle="color: red;" /></td>
+						</tr>
+						<tr>
+							<td>Student Phone Number: </td>
+							<td><form:input path="stuPhoneNo" readonly="true"
+									value= "${student.stuPhoneNo}"
+									size="10" /></td>
+							<td><form:errors path="stuPhoneNo" cssStyle="color: red;" /></td>
+						</tr>
+						<tr>
+							<td>Student Address: </td>
+							<td><form:input path="stuAddress" readonly="true"
+									value= "${student.stuAddress}"
+									size="10" /></td>
+							<td><form:errors path="stuAddress" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course ID: </td>
@@ -94,6 +115,7 @@
 							<td><form:button name="submit" type="submit" value="Submit" size="1000">
 
 								</form:button></td>
+							<td>
 							<form:button name="clear" type="reset" value="Reset" size="1000">
 
 							</form:button>

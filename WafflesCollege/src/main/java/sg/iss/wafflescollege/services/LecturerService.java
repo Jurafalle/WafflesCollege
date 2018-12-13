@@ -30,6 +30,8 @@ public interface LecturerService {
 	
 	Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId);
 	
+	Student findStudentByStuId(String stuId);
+	
 	
 	
 	

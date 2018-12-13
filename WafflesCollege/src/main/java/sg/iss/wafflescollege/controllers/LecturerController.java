@@ -78,10 +78,11 @@ public class LecturerController {
 	}
 
 	@RequestMapping(value = "/studentsofspecificcourse/{cseId}/viewperformance/{stuId}", method = RequestMethod.GET)
-	public ModelAndView viewAStudentPerformancePage(@PathVariable String cseId, @PathVariable String stuId,
-			@ModelAttribute Course course) {
+	public ModelAndView viewAStudentPerformancePage(@PathVariable String cseId, @PathVariable String stuId) {
 		Studentgrade studentgrade = lService.findStudentgradeByStuIdCseId(stuId, cseId);
 		ModelAndView mav = new ModelAndView("ViewAStudentPerformance", "studentgrade", studentgrade);
+		Student student=lService.findStudentByStuId(stuId);
+		mav.addObject(student);
 		return mav;
 	}
 }

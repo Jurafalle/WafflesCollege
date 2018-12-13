@@ -151,4 +151,10 @@ public class LecturerServiceImpl implements LecturerService {
 	public Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId) {
 		return sgrepo.findStudentgradeByStuIdCseId(stuId, cseId);
 	}
+	
+	@Override
+	@Transactional
+	public Student findStudentByStuId(String stuId) {
+		return srepo.findStudentByStuId(stuId);
+	}
 }

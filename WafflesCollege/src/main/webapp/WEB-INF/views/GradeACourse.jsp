@@ -99,6 +99,7 @@
 							<td><form:button name="submit" type="submit" value="Submit" size="1000">
 
 								</form:button></td>
+							<td>
 							<form:button name="clear" type="reset" value="Reset" size="1000">
 
 							</form:button>

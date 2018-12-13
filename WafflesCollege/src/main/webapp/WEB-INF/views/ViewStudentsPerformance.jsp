@@ -54,9 +54,10 @@
 								<th>Student ID</th>
 								<th>Student Name</th>
 								<th>Course ID</th>
+								<th>Course Name</th>
+								<th>Student Email</th>
 								<th>Student Phone Number</th>
 								<th>Student Address</th>
-								<th>Grade</th>
 							</tr>
 
 							<c:forEach var="student" items="${students}">
@@ -64,6 +65,8 @@
 									<td align="left">${student.stuId}</td>
 									<td align="left">${student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
 									<td align="left">${cseId}</td>
+									<td align="left">${course.cseDesc}</td>
+									<td align="left">${student.stuEmail}</td>
 									<td align="left">${student.stuPhoneNo}</td>
 									<td align="left">${student.stuAddress}</td>
 									<td align="center"><a
