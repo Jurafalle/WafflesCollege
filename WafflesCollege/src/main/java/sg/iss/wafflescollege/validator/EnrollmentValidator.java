@@ -1,5 +1,6 @@
 package sg.iss.wafflescollege.validator;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -7,11 +8,11 @@ import org.springframework.validation.Validator;
 
 import sg.iss.wafflescollege.model.Enrollment;
 
+@Component
 public class EnrollmentValidator implements Validator {
 
 	public EnrollmentValidator() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
