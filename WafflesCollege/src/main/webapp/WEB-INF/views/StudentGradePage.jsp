@@ -68,7 +68,7 @@
 									<td align="left">${studentgrade.course.cseDesc}</td>
 									<td align="left">${studentgrade.stgGrade}</td>
 									<td align="center"><a
-										href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${studentgrade.student.stuId}">Grade This Student</a></td>
+										href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${studentgrade.stgId}">Grade This Student</a></td>
 								</tr>
 							</c:forEach>
 

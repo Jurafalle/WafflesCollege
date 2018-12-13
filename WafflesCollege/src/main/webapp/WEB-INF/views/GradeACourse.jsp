@@ -52,54 +52,54 @@
 						<tr>
 
 							<td>Studentgrade ID: </td>
-							<td><form:input size="16" path="stgId" readonly="true" value= "${stgId}" />
+							<td><form:input disabled="true" size="4" path="stgId" readonly="true" value= "${stgId}" />
 								<form:errors path="stgId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student ID: </td>
-							<td><form:input disabled="true" size="10" path="student.stuId" readonly="true"
+							<td><form:input disabled="true" size="5" path="student.stuId" readonly="true"
 									value= "${studentgrade.student.stuId}" /></td>
 							<td><form:errors path="student.stuId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student First Name: </td>
-							<td><form:input path="student.stuFirstmidname" readonly="true"
+							<td><form:input disabled="true" path="student.stuFirstmidname" readonly="true"
 									value= "${studentgrade.student.stuFirstmidname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuFirstmidname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student Last Name: </td>
-							<td><form:input path="student.stuLastname" readonly="true"
+							<td><form:input disabled="true" path="student.stuLastname" readonly="true"
 									value= "${studentgrade.student.stuLastname}"
 									size="10" /></td>
 							<td><form:errors path="student.stuLastname" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course ID: </td>
-							<td><form:input path="course.cseId" readonly="true"
+							<td><form:input disabled="true" path="course.cseId" readonly="true"
 									value= "${studentgrade.course.cseId}"
 									size="10" /></td>
 							<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course Name: </td>
-							<td><form:input path="course.cseDesc" readonly="true"
+							<td><form:input disabled="true" path="course.cseDesc" readonly="true"
 									value= "${studentgrade.course.cseDesc}"
-									size="10" /></td>
+									size="40" /></td>
 							<td><form:errors path="course.cseDesc" cssStyle="color: red;" /></td>
 						</tr>
 	                    <tr>
 							<td>Course Grade: </td>
 							<td><form:input path="stgGrade" value="Please input exam result from 0-100"
-									size="10" /></td>
+									size="40" /></td>
 							<td><form:errors path="stgGrade" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
-							<td><form:button name="submit" type="submit" value="Submit" size="10">
+							<td><form:button name="submit" type="submit" value="Submit" size="1000">
 
 								</form:button></td>
-							<form:button name="clear" type="reset" value="Reset" size="10">
+							<form:button name="clear" type="reset" value="Reset" size="1000">
 
 							</form:button>
 							</td>

@@ -65,14 +65,14 @@ public class LecturerServiceImpl implements LecturerService {
 	@Override
 	@Transactional
 	public ArrayList<Studentgrade> findSpecificCourseStudentgrade(String cseId) {
-		ArrayList<Enrollment> enlist1=(ArrayList<Enrollment>) erepo.findApprovedEnrollmentByCseId(cseId);
-		ArrayList<Enrollment> enlist2=(ArrayList<Enrollment>) erepo.findCompletedEnrollmentByCseId(cseId);
+		ArrayList<Enrollment> enlist1 = (ArrayList<Enrollment>) erepo.findApprovedEnrollmentByCseId(cseId);
+		ArrayList<Enrollment> enlist2 = (ArrayList<Enrollment>) erepo.findCompletedEnrollmentByCseId(cseId);
 		for (Enrollment enrollment : enlist2) {
 			enlist1.add(enrollment);
 		}
-		ArrayList<Studentgrade> result=new ArrayList<Studentgrade>();
+		ArrayList<Studentgrade> result = new ArrayList<Studentgrade>();
 		for (Enrollment enrollment : enlist1) {
-			int sgId=enrollment.getEnrId();
+			int sgId = enrollment.getEnrId();
 			result.add(sgrepo.findStudentgradeByStgId(sgId));
 		}
 		return result;
@@ -96,6 +96,53 @@ public class LecturerServiceImpl implements LecturerService {
 			students.add(newstu);
 		}
 		return students;
+	}
 
+	@Override
+	@Transactional
+	public Studentgrade findStudentgradeByStgId(int stgId) {
+
+		return sgrepo.findStudentgradeByStgId(stgId);
+	}
+
+	@Override
+	@Transactional
+	public String convertToGrade(String score) {
+		int number = Integer.parseInt(score);
+		String result = "";
+		if (number >= 0 && number < 40) {
+			result = "F";
+		}
+		if (number >= 40 && number < 45) {
+			result = "D";
+		}
+		if (number >= 45 && number < 50) {
+			result = "D+";
+		}
+		if (number >= 50 && number < 55) {
+			result = "C";
+		}
+		if (number >= 55 && number < 60) {
+			result = "C+";
+		}
+		if (number > 60 && number < 65) {
+			result = "B-";
+		}
+		if (number >= 65 && number < 70) {
+			result = "B";
+		}
+		if (number >= 70 && number < 75) {
+			result = "B+";
+		}
+		if (number >= 75 && number < 80) {
+			result = "A-";
+		}
+		if (number >= 80 && number < 85) {
+			result = "A";
+		}
+		if (number >= 85 && number < 100) {
+			result = "A+";
+		}
+		return result;
 	}
 }

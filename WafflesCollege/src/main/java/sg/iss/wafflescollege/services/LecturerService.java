@@ -24,6 +24,9 @@ public interface LecturerService {
 	
 	ArrayList<Student> findSpecificCourseStudents(String cseId);
 	
+	Studentgrade findStudentgradeByStgId(int stgId);
+	
+	String convertToGrade(String score);
 	
 	
 	
