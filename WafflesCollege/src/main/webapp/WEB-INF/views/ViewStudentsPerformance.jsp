@@ -62,15 +62,15 @@
 
 							<c:forEach var="student" items="${students}">
 								<tr class="listRecord">
-									<td align="left">${student.stuId}</td>
-									<td align="left">${student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
-									<td align="left">${cseId}</td>
-									<td align="left">${course.cseDesc}</td>
-									<td align="left">${student.stuEmail}</td>
-									<td align="left">${student.stuPhoneNo}</td>
-									<td align="left">${student.stuAddress}</td>
+									<td align="center">${student.stuId}</td>
+									<td align="center">${student.stuFirstmidname} ${studentgrade.student.stuLastname}</td>
+									<td align="center">${cseId}</td>
+									<td align="center">${course.cseDesc}</td>
+									<td align="center">${student.stuEmail}</td>
+									<td align="center">${student.stuPhoneNo}</td>
+									<td align="center">${student.stuAddress}</td>
 									<td align="center"><a
-										href="${pageContext.request.contextPath}/studentsofspecificcourse/${cseId}/viewperformance/${student.stuId}">View Performance</a></td>
+										href="${pageContext.request.contextPath}/lecturer/studentsofspecificcourse/${cseId}/viewperformance/${student.stuId}">View Performance</a></td>
 								</tr>
 							</c:forEach>
 

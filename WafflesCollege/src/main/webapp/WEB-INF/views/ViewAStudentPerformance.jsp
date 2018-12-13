@@ -51,6 +51,12 @@
 				
 						<table>
 					<tbody>
+					    <tr>
+
+							<td>Studentgrade ID: </td>
+							<td><form:input size="4" path="stgId" readonly="true" value= "${stgId}" />
+								<form:errors path="stgId" cssStyle="color: red;" /></td>
+						</tr>
 						<tr>
 							<td>Student ID: </td>
 							<td><form:input size="5" path="student.stuId" readonly="true"
@@ -73,29 +79,29 @@
 						</tr>
 						<tr>
 							<td>Student Email: </td>
-							<td><form:input path="stuEmail" readonly="true"
-									value= "${student.stuEmail}"
+							<td><form:input path="student.stuEmail" readonly="true"
+									value= "${studentgrade.student.stuEmail}"
 									size="10" /></td>
-							<td><form:errors path="stuEmail" cssStyle="color: red;" /></td>
+							<td><form:errors path="student.stuEmail" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student Phone Number: </td>
-							<td><form:input path="stuPhoneNo" readonly="true"
-									value= "${student.stuPhoneNo}"
+							<td><form:input path="student.stuPhoneNo" readonly="true"
+									value= "${studentgrade.student.stuPhoneNo}"
 									size="10" /></td>
-							<td><form:errors path="stuPhoneNo" cssStyle="color: red;" /></td>
+							<td><form:errors path="student.stuPhoneNo" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Student Address: </td>
-							<td><form:input path="stuAddress" readonly="true"
-									value= "${student.stuAddress}"
+							<td><form:input path="student.stuAddress" readonly="true"
+									value= "${studentgrade.student.stuAddress}"
 									size="10" /></td>
-							<td><form:errors path="stuAddress" cssStyle="color: red;" /></td>
+							<td><form:errors path="student.stuAddress" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
 							<td>Course ID: </td>
 							<td><form:input path="course.cseId" readonly="true"
-									value= "${cseId}"
+									value= "${studentgrade.course.cseId}"
 									size="10" /></td>
 							<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
 						</tr>

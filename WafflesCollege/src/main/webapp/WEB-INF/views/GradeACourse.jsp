@@ -52,7 +52,7 @@
 						<tr>
 
 							<td>Studentgrade ID: </td>
-							<td><form:input disabled="true" size="4" path="stgId" readonly="true" value= "${stgId}" />
+							<td><form:input disabled="true" size="4" path="stgId" readonly="true"/>
 								<form:errors path="stgId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
