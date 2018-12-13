@@ -19,7 +19,7 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 	@Query("SELECT s.stgGrade FROM Course c, Studentgrade s, Enrollment e WHERE e.student = s.student AND e.enrStatus = 'Completed' AND c.cseId = e.course.cseId AND c.cseId = s.course.cseId AND e.student.stuId = :stuID ORDER BY s.stgId")
 	String[] GPAGrades(@Param("stuID") String stuID);
 	
-	@Query("SELECT s FROM Student c WHERE s.stuId = :stuId")
+	@Query("SELECT s FROM Student s WHERE s.stuId = :stuId")
 	Student findStudentByStuId(@Param("stuId") String stuId);
 	
 }

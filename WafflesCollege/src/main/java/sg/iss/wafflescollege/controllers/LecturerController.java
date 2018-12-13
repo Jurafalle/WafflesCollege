@@ -23,7 +23,7 @@ import sg.iss.wafflescollege.services.LecturerService;
 public class LecturerController {
 
 	@Autowired
-	private LecturerService lService;
+	LecturerService lService;
 
 	@RequestMapping(value = "/courses")
 	public ModelAndView viewCoursePage() {
