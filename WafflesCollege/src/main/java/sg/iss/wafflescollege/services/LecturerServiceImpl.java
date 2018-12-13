@@ -80,19 +80,19 @@ public class LecturerServiceImpl implements LecturerService {
 
 	@Override
 	@Transactional
-	public Studentgrade updateStudentgrade(Studentgrade studentgrade) {
+	public int updateStudentgrade(Studentgrade studentgrade) {
 		sgrepo.saveAndFlush(studentgrade);
-		return studentgrade;
+		return 0;
 	}
 
 	@Override
 	@Transactional
-	public ArrayList<Student> findSpecificCourseStudents(String cseId) {
+	public ArrayList<Student> findActiveSpecificCourseStudents(String cseId) {
 		ArrayList<Enrollment> enrollments = erepo.findEnrollmentByCseId(cseId);
 		ArrayList<Student> students = new ArrayList<Student>();
 		for (Enrollment enrollment : enrollments) {
 			String stuId = enrollment.getStudent().getStuId();
-			Student newstu = srepo.findStudentByStuId(stuId);
+			Student newstu = srepo.findActiveStudentByStuId(stuId);
 			students.add(newstu);
 		}
 		return students;
@@ -144,5 +144,17 @@ public class LecturerServiceImpl implements LecturerService {
 			result = "A+";
 		}
 		return result;
+	}
+	
+	@Override
+	@Transactional
+	public Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId) {
+		return sgrepo.findStudentgradeByStuIdCseId(stuId, cseId);
+	}
+	
+	@Override
+	@Transactional
+	public Student findStudentByStuId(String stuId) {
+		return srepo.findStudentByStuId(stuId);
 	}
 }

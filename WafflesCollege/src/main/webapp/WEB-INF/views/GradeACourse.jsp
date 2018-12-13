@@ -45,14 +45,14 @@
 			<article>
 				<h1>Grade a Student under Course ${cseId}</h1>
 				<form:form method="POST" modelAttribute="studentgrade"
-					action="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/{cseId}">
+					action="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${stgId}">
 				<table>
 					<tbody>
 
 						<tr>
 
 							<td>Studentgrade ID: </td>
-							<td><form:input disabled="true" size="4" path="stgId" readonly="true" value= "${stgId}" />
+							<td><form:input disabled="true" size="4" path="stgId" readonly="true"/>
 								<form:errors path="stgId" cssStyle="color: red;" /></td>
 						</tr>
 						<tr>
@@ -99,6 +99,7 @@
 							<td><form:button name="submit" type="submit" value="Submit" size="1000">
 
 								</form:button></td>
+							<td>
 							<form:button name="clear" type="reset" value="Reset" size="1000">
 
 							</form:button>

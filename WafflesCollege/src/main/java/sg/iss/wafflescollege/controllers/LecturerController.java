@@ -58,21 +58,34 @@ public class LecturerController {
 	}
 
 	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/grading/{stgId}", method = RequestMethod.POST)
-	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId, 
-			@ModelAttribute Studentgrade studentgrade, final RedirectAttributes redirectAttributes) {
-		String newStgGrade=lService.convertToGrade(studentgrade.getStgGrade());
+	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId,
+			@ModelAttribute Studentgrade studentgrade) {
+		String newStgGrade = lService.convertToGrade(studentgrade.getStgGrade());
 		studentgrade.setStgGrade(newStgGrade);
-		studentgrade = lService.updateStudentgrade(studentgrade);
-		ArrayList<Studentgrade> studentgrades=lService.findSpecificCourseStudentgrade(cseId);
-		ModelAndView mav = new ModelAndView("redirect:/lecturer/studentgradesofspecificcourse/{cseId}", "studentgrades", studentgrades);
-		return mav;
-	}
-	
-	@RequestMapping(value = "/studentsofspecificcourse/{cseId}")
-	public ModelAndView studentPerformancePage(@PathVariable String cseId) {
-		ArrayList<Student> students=lService.findSpecificCourseStudents(cseId);
-		ModelAndView mav=new ModelAndView("ViewAStudentPerformance", "students", students);
+		lService.updateStudentgrade(studentgrade);
+		ArrayList<Studentgrade> studentgrades = lService.findSpecificCourseStudentgrade(cseId);
+		ModelAndView mav = new ModelAndView("StudentGradePage", "studentgrades", studentgrades);
 		return mav;
 	}
 
+	@RequestMapping(value = "/studentsofspecificcourse/{cseId}", method = RequestMethod.GET)
+	public ModelAndView studentPerformancePage(@PathVariable String cseId) {
+		ArrayList<Student> students = lService.findActiveSpecificCourseStudents(cseId);
+		ModelAndView mav = new ModelAndView("ViewStudentsPerformance", "students", students);
+		Course course = lService.findCourse(cseId);
+		mav.addObject("course", course);
+		return mav;
+	}
+
+	@RequestMapping(value = "/studentsofspecificcourse/{cseId}/viewperformance/{stuId}", method = RequestMethod.GET)
+	public ModelAndView viewAStudentPerformancePage(@PathVariable String cseId, @PathVariable String stuId) {
+		Studentgrade studentgrade = lService.findStudentgradeByStuIdCseId(stuId, cseId);
+//		Studentgrade studentgrade = lService.findStudentgradeByStgId(2);
+		ModelAndView mav = new ModelAndView("ViewAStudentPerformance", "studentgrade", studentgrade);
+//		Student student=lService.findStudentByStuId(stuId);
+//		mav.addObject("student",student);
+//		Course course = lService.findCourse(cseId);
+//		mav.addObject("course", course);
+		return mav;
+	}
 }

@@ -20,13 +20,17 @@ public interface LecturerService {
 	
 	ArrayList<Studentgrade> findSpecificCourseStudentgrade(String cseId);
 	
-	Studentgrade updateStudentgrade(Studentgrade studentgrade);
+	int updateStudentgrade(Studentgrade studentgrade);
 	
-	ArrayList<Student> findSpecificCourseStudents(String cseId);
+	ArrayList<Student> findActiveSpecificCourseStudents(String cseId);
 	
 	Studentgrade findStudentgradeByStgId(int stgId);
 	
 	String convertToGrade(String score);
+	
+	Studentgrade findStudentgradeByStuIdCseId(String stuId, String cseId);
+	
+	Student findStudentByStuId(String stuId);
 	
 	
 	

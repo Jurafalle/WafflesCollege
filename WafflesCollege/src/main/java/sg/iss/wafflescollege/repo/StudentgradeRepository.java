@@ -20,4 +20,6 @@ public interface StudentgradeRepository extends JpaRepository<Studentgrade, Inte
 	@Query("SELECT s FROM Studentgrade s where s.stgId = :stgId")
 	Studentgrade findStudentgradeByStgId(@Param("stgId") int stgId);
 
+	@Query("SELECT s FROM Studentgrade s where s.student.stuId = :stuId AND s.course.cseId = :cseId")
+	Studentgrade findStudentgradeByStuIdCseId(@Param("stuId") String stuId, @Param("cseId") String cseId);
 }
