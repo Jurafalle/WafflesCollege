@@ -27,11 +27,11 @@
 <section>
 <div class="col-container">
   <nav>
-       <a href="ViewCoursesTaught.jsp" class="sidebar-button">View Courses Taught</a>
-       <a href="ViewCourseEnrolment.jsp" class="sidebar-button"><b>View Course Enrollment</b></a>
-       <a href="GradeACourse.jsp" class="sidebar-button">Grade a Course</a>
-       <a href="ViewAStudentPerformance.jsp" class="sidebar-button">View a Student Performance</a>
-       <a href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
+       <a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">View Courses Taught</a>
+       <a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button"><b>View Course Enrollment</b></a>
+       <a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">Grade a Course</a>
+       <a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">View a Student Performance</a>
+       <a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">Log Out</a>
   </nav>
   
   <article>

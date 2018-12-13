@@ -22,23 +22,22 @@
 <body>
 
 
-	<header>
+<header>
 		<img src="../../images/pizzaman.jpg" style="width: 90px" align="left"
 			alt="">
 		<h3>Waffles College Lecturer Portal</h3>
 
-	</header>
+</header>
 
-	<section>
-		<div class="col-container">
-			<nav>
-				<a href="ViewCoursesTaught.jsp" class="sidebar-button"><b>ViewCourses
-						Taught</b></a> <a href="ViewCourseEnrolment.jsp" class="sidebar-button">View
-					Course Enrolment</a> <a href="GradeACourse.jsp" class="sidebar-button">Grade
-					a Course</a> <a href="ViewAStudentPerformance.jsp"
-					class="sidebar-button">View a Student Performance</a> <a
-					href="../main/MainPage.jsp" class="sidebar-button">Log Out</a>
-			</nav>
+<section>
+	<div class="col-container">
+		<nav>
+			<a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">View Courses Taught</a>
+       		<a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button"><b>View Course Enrollment</b></a>
+       		<a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">Grade a Course</a>
+       		<a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">View a Student Performance</a>
+      		<a href="${pageContext.request.contextPath}/lecturer/courses" class="sidebar-button">Log Out</a>
+		</nav>
 
 			<article>
 				<h1>View Courses Taught</h1>
@@ -56,8 +55,7 @@
 							<th>Start Date</th>
 							<th>Status</th>
 						</tr>
-
-
+						
 						<c:forEach var="course" items="${courses}">
 							<tr class="listRecord">
 								<td align="left">${course.cseId}</td>
@@ -67,12 +65,12 @@
 								<td align="left">${course.cseStartdate}</td>
 								<td align="left">${course.cseStatus}</td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}/enrollmentsofspecificcourse/${course.cseId}">View
+									href="${pageContext.request.contextPath}/lecturer/enrollmentsofspecificcourse/${course.cseId}">View
 										Enrollments</a></td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}/studentgradesofspecificcourse/${course.cseId}">Grading</a></td>
+									href="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${course.cseId}">Grading</a></td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}//studentsofspecificcourse/${course.cseId}">View
+									href="${pageContext.request.contextPath}/lecturer/studentsofspecificcourse/${course.cseId}">View
 										Students</a></td>
 							</tr>
 						</c:forEach>

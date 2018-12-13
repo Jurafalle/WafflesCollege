@@ -52,6 +52,7 @@ public class LecturerController {
 	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId) {
 		Studentgrade studentgrade = new Studentgrade();
 		ModelAndView mav = new ModelAndView("GradeACourse", "studentgrade", studentgrade);
+//		ArrayList<String> resultList= {""
 		return mav;
 	}
 
