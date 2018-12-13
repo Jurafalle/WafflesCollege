@@ -45,12 +45,13 @@
 				<c:if test="${fn:length(courses) gt 0}">
 					<br />
 					<br />
-					<table class= borderAll style="cellspacing: 2; cellpadding: 2; border: 1;">
+					<table class=borderAll
+						style="cellspacing: 2; cellpadding: 2; border: 1;">
 
 						<tr class="listHeading">
 							<th>Course ID</th>
+							<th>Course Name</th>
 							<th>Course Credit</th>
-							<th>Description</th>
 							<th>Max Size</th>
 							<th>Start Date</th>
 							<th>Status</th>
@@ -60,20 +61,19 @@
 						<c:forEach var="course" items="${courses}">
 							<tr class="listRecord">
 								<td align="left">${course.cseId}</td>
-								<td align="left">${course.cseCredit}</td>
 								<td align="left">${course.cseDesc}</td>
+								<td align="left">${course.cseCredit}</td>
 								<td align="left">${course.cseMaxSize}</td>
 								<td align="left">${course.cseStartdate}</td>
 								<td align="left">${course.cseStatus}</td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}/enrollmentsofspecificcourse/${cseId}">view
-										enrollment</a></td>
+									href="${pageContext.request.contextPath}/enrollmentsofspecificcourse/${course.cseId}">View
+										Enrollments</a></td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}/studentgradesofspecificcourse/${cseId}">grading</a></td>
+									href="${pageContext.request.contextPath}/studentgradesofspecificcourse/${course.cseId}">Grading</a></td>
 								<td align="center"><a
-									href="${pageContext.request.contextPath}//studentsofspecificcourse/${cseId}">view
-										student</a></td>
-
+									href="${pageContext.request.contextPath}//studentsofspecificcourse/${course.cseId}">View
+										Students</a></td>
 							</tr>
 						</c:forEach>
 
