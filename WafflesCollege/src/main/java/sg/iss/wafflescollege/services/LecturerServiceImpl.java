@@ -159,7 +159,7 @@ public class LecturerServiceImpl implements LecturerService {
 	
 	@Override
 	@Transactional
-	public Studentgrade updateStudentGrade(Studentgrade studentgrade, Studentgrade studentgrade2) {
+	public Studentgrade updateStudentGrade(Studentgrade studentgrade) {
 		String score = studentgrade.getStgGrade();
 		int number = Integer.parseInt(score);
 		String grade = "";
@@ -196,13 +196,15 @@ public class LecturerServiceImpl implements LecturerService {
 		if (number >= 85 && number < 100) {
 			grade = "A+";
 		}
-		int id=studentgrade2.getStgId();
-		Student student=studentgrade2.getStudent();
-		Course course=studentgrade2.getCourse();
-		studentgrade.setStgId(id);
-		studentgrade.setStudent(student);
-		studentgrade.setCourse(course);
 		studentgrade.setStgGrade(grade);
-		return sgrepo.saveAndFlush(studentgrade);	
+		return sgrepo.saveAndFlush(studentgrade);
+	}
+	
+	@Override
+	@Transactional
+	public Student findStudentByStgId(String stgId) {
+		int sgId=Integer.parseInt(stgId);
+		Studentgrade studentgrade=sgrepo.findStudentgradeByStgId(sgId);
+		return studentgrade.getStudent();
 	}
 }

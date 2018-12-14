@@ -32,9 +32,9 @@ public interface LecturerService {
 	
 	Student findStudentByStuId(String stuId); 
 	
-	Studentgrade updateStudentGrade(Studentgrade studentgrade, Studentgrade studentgrade2);
+	Studentgrade updateStudentGrade(Studentgrade studentgrade);
 	
-	
+	Student findStudentByStgId(String stgId);
 	
 	
 

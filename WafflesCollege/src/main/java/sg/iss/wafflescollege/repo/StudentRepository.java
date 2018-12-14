@@ -52,5 +52,5 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 	
 	@Query("SELECT s FROM Student s WHERE s.stuId = :stuId AND s.stuStatus = 'Active'")
 	Student findActiveStudentByStuId(@Param("stuId") String stuId);
-
+	
 }

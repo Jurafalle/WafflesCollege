@@ -54,25 +54,19 @@ public class LecturerController {
 	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId) {
 		int number = Integer.parseInt(stgId);
 		Studentgrade studentgrade = lService.findStudentgradeByStgId(number);
-		Studentgrade studentgrade2 = lService.findStudentgradeByStgId(number);
-		ModelAndView mav = new ModelAndView("GradeACourse", "studentgrade", studentgrade);
-		mav.addObject(studentgrade2);
+		ModelAndView mav = new ModelAndView("GradeACourse");
+		mav.addObject("studentgrade", studentgrade);
 		return mav;
 	}
 
 	@RequestMapping(value = "/studentgradesofspecificcourse/{cseId}/grading/{stgId}", method = RequestMethod.POST)
-	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable String stgId,
-			@ModelAttribute Studentgrade studentgrade, @ModelAttribute Studentgrade studentgrade2,
-			BindingResult result) {
+	public ModelAndView gradeStudentPage(@PathVariable String cseId, @PathVariable Integer stgId,
+			@ModelAttribute Studentgrade studentgrade, BindingResult result) {
 		if (result.hasErrors())
 			return new ModelAndView("StudentGradePage");
-		
-//		String newStgGrade = lService.convertToGrade(studentgrade.getStgGrade());
-//		studentgrade.setStgGrade(newStgGrade);
-//		lService.updateStudentgrade(studentgrade);
+		lService.updateStudentGrade(studentgrade);
 		ArrayList<Studentgrade> studentgrades = lService.findSpecificCourseStudentgrade(cseId);
 		ModelAndView mav = new ModelAndView("StudentGradePage", "studentgrades", studentgrades);
-		lService.updateStudentGrade(studentgrade, studentgrade2);
 		return mav;
 	}
 

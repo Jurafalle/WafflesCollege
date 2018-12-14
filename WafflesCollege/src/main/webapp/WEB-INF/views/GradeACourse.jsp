@@ -48,74 +48,65 @@
 					action="${pageContext.request.contextPath}/lecturer/studentgradesofspecificcourse/${cseId}/grading/${stgId}">
 					<table>
 						<tbody>
-
 							<tr>
-
-								<td>Studentgrade ID:</td>
-								<td><form:input disabled="true" size="4" path="stgId"
-										readonly="true" value="${stuId}" /> <form:errors
-										path="stgId" cssStyle="color: red;" /></td>
+								<td>Studentgrade ID: </td>
+								<td><form:input path="stgId" size="10" readonly="true" /></td>
+								<td><form:errors path="stgId" cssStyle="color: red;" /></td>
+							</tr>	
+							<tr>
+								<td>Course ID: </td>
+								<td><form:input path="course.cseId" 
+										size="10" readonly="true"/></td>
+								<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
 							</tr>
 							<tr>
-								<td>Student ID:</td>
-								<td><form:input disabled="true" size="5"
-										path="student.stuId" readonly="true"
-										value="${studentgrade.student.stuId}" /></td>
+								<td>Course Name: </td>
+								<td><form:input path="course.cseDesc" 
+										size="40" readonly="true"/></td>
+								<td><form:errors path="course.cseDesc" cssStyle="color: red;" /></td>
+							</tr>
+							<tr>
+								<td>Student ID: </td>
+								<td><form:input path="student.stuId" 
+										size="10" readonly="true"/></td>
 								<td><form:errors path="student.stuId"
 										cssStyle="color: red;" /></td>
 							</tr>
 							<tr>
-								<td>Student First Name:</td>
-								<td><form:input disabled="true"
-										path="student.stuFirstmidname" readonly="true"
-										value="${studentgrade.student.stuFirstmidname}" size="10" /></td>
+								<td>Student First Name: </td>
+								<td><form:input path="student.stuFirstmidname" 
+										size="10" readonly="true"/></td>
 								<td><form:errors path="student.stuFirstmidname"
-										cssStyle="color: red;" /></td> 
+										cssStyle="color: red;" /></td>
 							</tr>
 							<tr>
-								<td>Student Last Name:</td>
-								<td><form:input disabled="true" path="student.stuLastname"
-										readonly="true" value="${studentgrade.student.stuLastname}"
-										size="10" /></td>
+								<td>Student Last Name: </td>
+								<td><form:input path="student.stuLastname" 
+										size="10" readonly="true"/></td>
 								<td><form:errors path="student.stuLastname"
 										cssStyle="color: red;" /></td>
 							</tr>
 							<tr>
-								<td>Course ID:</td>
-								<td><form:input disabled="true" path="course.cseId"
-										readonly="true" value="${studentgrade.course.cseId}" size="10" /></td>
-								<td><form:errors path="course.cseId" cssStyle="color: red;" /></td>
-							</tr>
-							<tr>
-								<td>Course Name:</td>
-								<td><form:input disabled="true" path="course.cseDesc"
-										readonly="true" value="${studentgrade.course.cseDesc}"
+								<td>Course Scoring: </td>
+								<td><form:input path="stgGrade" value="Input the actual scoring"
 										size="40" /></td>
-								<td><form:errors path="course.cseDesc"
-										cssStyle="color: red;" /></td>
-							</tr>
-							<tr>
-								<td>Course Grade:</td>
-								<td><form:input path="stgGrade"
-										value="Please input exam result from 0-100" size="40" /></td>
 								<td><form:errors path="stgGrade" cssStyle="color: red;" /></td>
 							</tr>
+
 							<tr>
-								<td><form:button name="submit" type="submit" value="Submit"
-										size="1000">
+								<td><form:button name="submit" type="submit" value="Submit">
 
 									</form:button></td>
-								<td><form:button name="clear" type="reset" value="Reset"
-										size="1000">
+								<form:button name="reset" type="reset" value="Reset">
 
-									</form:button></td>
+								</form:button>
+								</td>
 								<td></td>
 								<td></td>
-							</tr>
+							</tr> 
 						</tbody>
 					</table>
 				</form:form>
-
 			</article>
 		</div>
 	</section>
